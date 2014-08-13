@@ -6,7 +6,7 @@
 
     <div class="jumbotron">
         <div class="container">
-            <h1>Our Committee <small>About Us</small></h1>
+            <h1>Committee</h1>
             <p>
                 Here you can find a list of the trusted servents for Rainbow Weekend 17.
             </p>
@@ -16,6 +16,7 @@
     <div class="container">
             {% include 'RwWebBundle:About:committee_list.html.twig' with {'header': 'Admin', 'committee': committee_admin} only %}
             {% include 'RwWebBundle:About:committee_list.html.twig' with {'header': 'Sub-Committee Chairs', 'committee': committee_chair} only %}
+            {% include 'RwWebBundle:About:committee_list.html.twig' with {'header': 'Group Representatives', 'committee': committee_representative} only %}
     </div>
 
     {% include 'RwWebBundle:Part:footer.html.twig' only %}

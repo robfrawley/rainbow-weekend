@@ -8,20 +8,20 @@
                 <th>Position</th>
                 <th>Name</th>
                 <th>Phone</th>
-                <th>Email</th>
             </tr>
         </thead>
         <tbody>
             {% for c in committee %}
                 <tr>
                     <td>{{ c.getPosition }}</td>
-                    <td>{{ c.getName }}</td>
-                    <td>{{ c.getPhone }}</td>
                     <td>
                         {% if c.getEmail != null %}
-                            <a href="mailto:{{ c.getEmail }}">{{ c.getEmail }}</a>
+                            <a href="mailto:{{ c.getEmail }}">{{ c.getName }}</a>
+                        {% else %}
+                            {{ c.getName }}
                         {% endif %}
                     </td>
+                    <td>{{ c.getPhone }}</td>
                 </tr>
             {% else %}
                 <tr>
