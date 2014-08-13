@@ -28,4 +28,9 @@ class DefaultController extends AbstractController
             ]
         );
     }
+
+    public function redirectAction()
+    {
+        return $this->redirect('https://sites.google.com/site/rweekend17/');
+    }
 }

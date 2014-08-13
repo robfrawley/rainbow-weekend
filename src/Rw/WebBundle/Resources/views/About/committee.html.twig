@@ -1,24 +1,25 @@
-{% extends 'RwWebBundle::bootstrap.html.twig' %}
+{% extends 'RwWebBundle::base.html.twig' %}
 
-{% block body %}
+{% block content %}
 
-    {% include 'RwWebBundle:Part:header.html.twig' with {'currentRoute': currentRoute} only %}
-
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Committee</h1>
-            <p>
-                Here you can find a list of the trusted servents for Rainbow Weekend 17.
-            </p>
-        </div>
-    </div>
+    {% include 'RwWebBundle::_jumbotron.html.twig' with {
+        'header': 'Committee', 
+        'lead'  : 'Here you can find a list of the trusted servents for Rainbow Weekend 17.'
+    } only %}
 
     <div class="container">
-            {% include 'RwWebBundle:About:committee_list.html.twig' with {'header': 'Admin', 'committee': committee_admin} only %}
-            {% include 'RwWebBundle:About:committee_list.html.twig' with {'header': 'Sub-Committee Chairs', 'committee': committee_chair} only %}
-            {% include 'RwWebBundle:About:committee_list.html.twig' with {'header': 'Group Representatives', 'committee': committee_representative} only %}
+        {% include 'RwWebBundle:About:_committee_list.html.twig' with {
+            'header'   : 'Admin', 
+            'committee': committee_admin
+        } only %}
+        {% include 'RwWebBundle:About:_committee_list.html.twig' with {
+            'header'   : 'Sub-Committee Chairs', 
+            'committee': committee_chair
+        } only %}
+        {% include 'RwWebBundle:About:_committee_list.html.twig' with {
+            'header'   : 'Group Representatives', 
+            'committee': committee_representative
+        } only %}
     </div>
-
-    {% include 'RwWebBundle:Part:footer.html.twig' only %}
 
 {% endblock %}

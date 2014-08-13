@@ -20,39 +20,35 @@ assetic:
         yui_js:
             jar:        '%kernel.root_dir%/../vendor/yui/yuicompressor/yuicompressor-2.4.8.jar'
     assets:
-        rf_less:
+        rw_less:
             inputs:
                 - '%kernel.root_dir%/../src/Rw/WebBundle/Resources/public/less/rf.less'
             filters: [less,cssrewrite,yui_css]
-        rf_js:
+        rw_js:
             inputs:
                 - '%kernel.root_dir%/../src/Rw/WebBundle/Resources/public/js/main.js'
         font_awesome_css:
             inputs:
                 - '%kernel.root_dir%/../component/font-awesome/css/font-awesome.css'
             filters: [cssrewrite,yui_css]
-        font_awesome_ie7_css:
-            inputs:
-                - '%kernel.root_dir%/../component/font-awesome/css/font-awesome-ie7.css'
-            filters: [cssrewrite,yui_css]
         font_awesome_font_otf:
             inputs:
-                - '%kernel.root_dir%/../component/font-awesome/font/FontAwesome.otf'
+                - '%kernel.root_dir%/../component/font-awesome/fonts/FontAwesome.otf'
         font_awesome_font_eot:
             inputs:
-                - '%kernel.root_dir%/../component/font-awesome/font/fontawesome-webfont.eot'
+                - '%kernel.root_dir%/../component/font-awesome/fonts/fontawesome-webfont.eot'
         font_awesome_font_svg:
             inputs:
-                - '%kernel.root_dir%/../component/font-awesome/font/fontawesome-webfont.svg'
+                - '%kernel.root_dir%/../component/font-awesome/fonts/fontawesome-webfont.svg'
         font_awesome_font_ttf:
             inputs:
-                - '%kernel.root_dir%/../component/font-awesome/font/fontawesome-webfont.ttf'
+                - '%kernel.root_dir%/../component/font-awesome/fonts/fontawesome-webfont.ttf'
         font_awesome_font_woff:
             inputs:
-                - '%kernel.root_dir%/../component/font-awesome/font/fontawesome-webfont.woff'
+                - '%kernel.root_dir%/../component/font-awesome/fonts/fontawesome-webfont.woff'
         jquery_js:
             inputs:
-                - '%kernel.root_dir%/../component/jquery/jquery.js'
+                - '%kernel.root_dir%/../component/jquery/dist/jquery.js'
         jquery_ui_js:
             inputs:
                 - '%kernel.root_dir%/../component/jquery-ui/jquery-ui.js'

@@ -1,17 +1,11 @@
-{% extends 'RwWebBundle::bootstrap.html.twig' %}
+{% extends 'RwWebBundle::base.html.twig' %}
 
-{% block body %}
+{% block content %}
 
-    {% include 'RwWebBundle:Part:header.html.twig' with {'currentRoute': currentRoute} only %}
-
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Rainbow Weekend <small>17</small></h1>
-            <p>
-                Rainbow Weekend is a celebration of recovery in Narcotics Anonymous, open to all and hosted in South Florida. 
-            </p>
-        </div>
-    </div>
+    {% include 'RwWebBundle::_jumbotron.html.twig' with {
+        'header': 'Rainbow Weekend <small>17</small>',
+        'lead'  : 'Rainbow Weekend is a celebration of recovery in Narcotics Anonymous, open to all and hosted in South Florida.'
+    } only %}
 
     <div class="container">
         <div class="row">
@@ -27,7 +21,5 @@
             {% endfor %}
         </div>
     </div>
-
-    {% include 'RwWebBundle:Part:footer.html.twig' only %}
 
 {% endblock %}

@@ -147,6 +147,13 @@ class Position
         return $this->email;
     }
 
+    public function getEmailShort()
+    {
+        if ($this->getEmail() === null) { return; }
+
+        return explode('@', $this->getEmail())[0];
+    }
+
     /**
      * Set context
      *

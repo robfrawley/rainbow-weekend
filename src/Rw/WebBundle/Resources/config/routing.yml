@@ -1,3 +1,7 @@
+rw_root:
+    pattern:  /
+    defaults: { _controller: RwWebBundle:Default:redirect }
+
 rw_welcome:
     pattern:  /welcome
     defaults: { _controller: RwWebBundle:Default:index }

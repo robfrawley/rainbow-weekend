@@ -8,8 +8,48 @@
     .panel-warning;
 }
 
+html,
 body {
-    padding-top:50px;
+    height: 100%;
+}
+
+body {
+    padding-top:46px;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -82px;
+}
+
+#content {
+    margin-bottom:60px;
+}
+
+footer {
+    background-color: @well-bg;
+    .copyright-info {
+        margin-top:30px;
+        margin-bottom:30px;
+        .text-muted;
+    }
+}
+
+#push,
+footer {
+    height: 80px;
+}
+
+@media (max-width: 767px) {
+    footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 
 .navbar-brand {
@@ -29,12 +69,6 @@ body {
     }
 }
 
-footer {
-    border-top: 1px solid #eee;
-    background-color: #fafafa;
-    margin-top: 40px;
-    .copyright-info {
-        margin-top:30px;
-        margin-bottom:30px;
-    }
+.jumbotron h1 small {
+    color: lighten(@jumbotron-heading-color, 30%);
 }

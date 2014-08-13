@@ -1,0 +1,27 @@
+<div class="page-header">
+    <h1 id="tables">{{ header|raw }}</h1>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th width="35%">Title</th>
+            <th width="30%">Date</th>
+            <th width="15%">Speaker</th>
+            <th width="20%">Area</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in program %}
+            <tr>
+                <td>{{ p.getTitle }}</td>
+                <td>{{ p.getDatetime.format('D, M j @ g:ia') }}</td>
+                <td>{{ p.getSpeaker }}</td>
+                <td>{{ p.getArea }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">No programming formation available at this time.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table> 

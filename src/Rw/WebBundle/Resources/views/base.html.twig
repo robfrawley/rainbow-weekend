@@ -1,0 +1,68 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+
+    {% block stylesheetsInternal %}
+
+        {% stylesheets
+            output='assets/css/compiled.css'
+            filter=''
+            '@rw_less'
+            '@font_awesome_css' 
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+        {% image '@font_awesome_font_otf'  output='assets/font/FontAwesome.otf'          %}{% endimage %}
+        {% image '@font_awesome_font_eot'  output='assets/font/fontawesome-webfont.eot'  %}{% endimage %}
+        {% image '@font_awesome_font_svg'  output='assets/font/fontawesome-webfont.svg'  %}{% endimage %}
+        {% image '@font_awesome_font_ttf'  output='assets/font/fontawesome-webfont.ttf'  %}{% endimage %}
+        {% image '@font_awesome_font_woff' output='assets/font/fontawesome-webfont.woff' %}{% endimage %}
+
+    {% endblock %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {% javascripts 
+        output='assets/js/compiled.js'
+        filter=''
+        '@jquery_js'
+        '@smoothscroll_js'
+        '@bootstrap_js'
+        '@rw_js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% javascripts 
+        output='assets/js/compiled_ie.js'
+        filter=''
+        '@html5shiv_js'
+        '@respond_js' 
+    %}
+        <!--[if lt IE 9]>
+        <script src="{{ asset_url }}"></script>
+        <![endif]-->
+    {% endjavascripts  %}
+
+{% endblock %}
+
+{% block body %}
+
+    <div id="wrap">
+
+        {% include 'RwWebBundle::_header.html.twig' with {'currentRoute': currentRoute} only %}
+
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+
+        <div id="push"></div>
+
+    </div>
+
+    {% include 'RwWebBundle::_footer.html.twig' only %}
+
+{% endblock %}

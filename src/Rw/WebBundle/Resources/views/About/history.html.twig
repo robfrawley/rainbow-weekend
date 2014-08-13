@@ -1,15 +1,11 @@
-{% extends 'RwWebBundle::bootstrap.html.twig' %}
+{% extends 'RwWebBundle::base.html.twig' %}
 
-{% block body %}
+{% block content %}
 
-    {% include 'RwWebBundle:Part:header.html.twig' with {'currentRoute': currentRoute} only %}
-
-    <div class="jumbotron">
-        <div class="container">
-            <h1>History</h1>
-            <p>Discovery the journey that developed and cultivated Rainbow Weekend from day one.</p>
-        </div>
-    </div>
+    {% include 'RwWebBundle::_jumbotron.html.twig' with {
+        'header': 'History',
+        'lead'  : 'Discovery the journey that developed and cultivated Rainbow Weekend from day one.'
+    } only %}
 
     <div class="container">
         <div class="row">
@@ -46,7 +42,5 @@
             </div>
         </div>
     </div>
-
-    {% include 'RwWebBundle:Part:footer.html.twig' only %}
 
 {% endblock %}
