@@ -1,0 +1,31 @@
+Rw\WebBundle\Entity\Position:
+    type: entity
+    table: null
+    repositoryClass: Rw\WebBundle\Entity\PositionRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        position:
+            type: string
+            length: '80'
+        name:
+            type: string
+            length: 255
+            nullable: true
+        phone:
+            type: bigint
+            nullable: true
+        email:
+            type: string
+            length: 255
+            nullable: true
+        context:
+            type: string
+            length: '40'
+        weight:
+            type: integer
+            nullable: true
+    lifecycleCallbacks: {  }

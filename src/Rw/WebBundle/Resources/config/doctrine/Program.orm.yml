@@ -1,0 +1,25 @@
+Rw\WebBundle\Entity\Program:
+    type: entity
+    table: null
+    repositoryClass: Rw\WebBundle\Entity\ProgramRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        datetime:
+            type: datetime
+        title:
+            type: string
+            length: '100'
+        speaker:
+            type: string
+            length: '100'
+        area:
+            type: string
+            length: '100'
+        context:
+            type: string
+            length: '20'
+    lifecycleCallbacks: {  }

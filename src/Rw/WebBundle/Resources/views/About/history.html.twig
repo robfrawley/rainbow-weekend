@@ -1,0 +1,52 @@
+{% extends 'RwWebBundle::bootstrap.html.twig' %}
+
+{% block body %}
+
+    {% include 'RwWebBundle:Part:header.html.twig' with {'currentRoute': currentRoute} only %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Our History <small>About Us</small></h1>
+            <p>Discovery the journey that developed and cultivated Rainbow Weekend from day one.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <p class="lead">
+                    Rainbow Weekend is a celebration of recovery in Narcotics Anonymous, open to all and hosted in South Florida.
+                </p>
+                <p>
+                    In 1996 members of the New Path and Rainbow Groups of NA (Gold Coast Area) formed a committee to have an NA Weekend for Gay, Lesbian, Bisexual, Trans-gendered and open-to-all recovering addicts. In 1997, the first Rainbow Weekend was a great success providing fellowship, learning forums, entertainment and lasting memories. Each year our event gets bigger though our goal remains the same — to help you find the strength, hope and tools to assist you in your journey.
+                </p>
+                <p>
+                    The planning for Rainbow Weekend is ongoing throughout every year so anyone can join the action at anytime. It is a great way to do service, meet others in the fellowship and have a lot of fun. Please contact any committee member to find out when the next planning meeting will be held. The main planning meetings are usually held the second Tuesday of the month at the The Pride Center 2nd Floor in Fort Lauderdale at 8:15 pm. 
+                </p>
+                <p>
+                    Rainbow Weekend proceeds go entirely to fund the current year’s event and anything leftover is donated to Narcotics Anonymous to help carry the message to other addicts. 
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-orange">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">The Founding Groups</h3>
+                    </div>
+                    <div class="list-group">
+                        <span class="list-group-item">
+                          <h4 class="list-group-item-heading">Rainbow Group</h4>
+                          <p class="list-group-item-text">This group has had locations in both Gold Coast Area and South Dade Area.</p>
+                        </span>
+                        <span class="list-group-item">
+                          <h4 class="list-group-item-heading">New Path</h4>
+                          <p class="list-group-item-text">As one of the first GLBT meetings in the Gold Coast Area, this group just celebrated it's 30 anniversary.</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'RwWebBundle:Part:footer.html.twig' only %}
+
+{% endblock %}

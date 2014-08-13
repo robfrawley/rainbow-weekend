@@ -1,0 +1,17 @@
+{% extends 'RfBlogBundle::bootstrap.html.twig' %}
+
+{% block body %}
+
+    {% include 'RfBlogBundle:Part:header.html.twig' with {'currentRoute': currentRoute} only %}
+
+    {% include 'RfBlogBundle:Part:welcome.html.twig' %}
+
+    <div class="container">
+        <div class="row">
+            {% include 'RfBlogBundle:MediaBrowser:browser.html.twig' with {'files': files, 'dirs': dirs, 'path': path, 'bread': bread} only %}
+        </div>
+    </div>
+
+    {% include 'RfBlogBundle:Part:footer.html.twig' only %}
+
+{% endblock %}

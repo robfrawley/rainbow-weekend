@@ -1,0 +1,40 @@
+.container {
+  @media (min-width: @screen-lg-min) {
+    width: @container-md !important;
+  }
+}
+
+.panel-orange {
+    .panel-warning;
+}
+
+body {
+    padding-top:50px;
+}
+
+.navbar-brand {
+    background-image:url("bundles/rwweb/images/rw_n.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+    overflow:hidden;
+    width:120px;
+    margin-left:0px !important;
+    @media (max-width: @screen-sm-min) {
+        margin-left:15px !important;
+    }
+    .no-overflow;
+    strong {
+        display: none;
+    }
+}
+
+footer {
+    border-top: 1px solid #eee;
+    background-color: #fafafa;
+    margin-top: 40px;
+    .copyright-info {
+        margin-top:30px;
+        margin-bottom:30px;
+    }
+}

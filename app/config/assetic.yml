@@ -1,0 +1,81 @@
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    bundles:        ['RwWebBundle']
+    java:           /usr/bin/java
+    filters:
+        cssrewrite:     ~
+        less:
+            node:       /usr/bin/node
+            node_paths: ['/usr/lib/node_modules/','/usr/local/lib/node_modules/']
+            compress:   true
+            apply_to:   "\.less$"
+        cssembed:
+            jar:        '%kernel.root_dir%/../vendor/nzakas/cssembed/cssembed-0.4.5.jar'
+        closure:
+            jar:        '%kernel.root_dir%/../vendor/google/closure-compiler/compiler.jar'
+        yui_css:
+            jar:        '%kernel.root_dir%/../vendor/yui/yuicompressor/yuicompressor-2.4.8.jar'
+        yui_js:
+            jar:        '%kernel.root_dir%/../vendor/yui/yuicompressor/yuicompressor-2.4.8.jar'
+    assets:
+        rf_less:
+            inputs:
+                - '%kernel.root_dir%/../src/Rw/WebBundle/Resources/public/less/rf.less'
+            filters: [less,cssrewrite,yui_css]
+        rf_js:
+            inputs:
+                - '%kernel.root_dir%/../src/Rw/WebBundle/Resources/public/js/main.js'
+        font_awesome_css:
+            inputs:
+                - '%kernel.root_dir%/../component/font-awesome/css/font-awesome.css'
+            filters: [cssrewrite,yui_css]
+        font_awesome_ie7_css:
+            inputs:
+                - '%kernel.root_dir%/../component/font-awesome/css/font-awesome-ie7.css'
+            filters: [cssrewrite,yui_css]
+        font_awesome_font_otf:
+            inputs:
+                - '%kernel.root_dir%/../component/font-awesome/font/FontAwesome.otf'
+        font_awesome_font_eot:
+            inputs:
+                - '%kernel.root_dir%/../component/font-awesome/font/fontawesome-webfont.eot'
+        font_awesome_font_svg:
+            inputs:
+                - '%kernel.root_dir%/../component/font-awesome/font/fontawesome-webfont.svg'
+        font_awesome_font_ttf:
+            inputs:
+                - '%kernel.root_dir%/../component/font-awesome/font/fontawesome-webfont.ttf'
+        font_awesome_font_woff:
+            inputs:
+                - '%kernel.root_dir%/../component/font-awesome/font/fontawesome-webfont.woff'
+        jquery_js:
+            inputs:
+                - '%kernel.root_dir%/../component/jquery/jquery.js'
+        jquery_ui_js:
+            inputs:
+                - '%kernel.root_dir%/../component/jquery-ui/jquery-ui.js'
+        smoothscroll_js:
+            inputs:
+                - '%kernel.root_dir%/../component/jquery.smooth-scroll/jquery.smooth-scroll.js'
+        bootstrap_js:
+            inputs:
+                - '%kernel.root_dir%/../component/bootstrap/js/transition.js'
+                - '%kernel.root_dir%/../component/bootstrap/js/alert.js'
+                - '%kernel.root_dir%/../component/bootstrap/js/modal.js'
+                - '%kernel.root_dir%/../component/bootstrap/js/dropdown.js'
+                - '%kernel.root_dir%/../component/bootstrap/js/scrollspy.js'
+                - '%kernel.root_dir%/../component/bootstrap/js/tab.js'
+                - '%kernel.root_dir%/../component/bootstrap/js/tooltip.js'
+                - '%kernel.root_dir%/../component/bootstrap/js/popover.js'
+                - '%kernel.root_dir%/../component/bootstrap/js/button.js'
+                - '%kernel.root_dir%/../component/bootstrap/js/collapse.js'
+                - '%kernel.root_dir%/../component/bootstrap/js/carousel.js'
+                - '%kernel.root_dir%/../component/bootstrap/js/affix.js'
+        respond_js:
+            inputs:
+                - '%kernel.root_dir%/../component/respond/respond.src.js'
+        html5shiv_js:
+            inputs:
+                - '%kernel.root_dir%/../component/html5shiv/src/html5shiv.js'

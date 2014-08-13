@@ -1,0 +1,10 @@
+rw_web:
+    resource: "@RwWebBundle/Resources/config/routing.yml"
+    prefix:   /
+
+rw_root:
+    path:     /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /welcome
+        permanent: true

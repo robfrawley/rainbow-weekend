@@ -1,0 +1,75 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+
+    {% block stylesheetsInternal %}
+
+        {% stylesheets
+            output='assets/css/compiled_all.css'
+            filter=''
+            '@rf_less'
+            '@font_awesome_css' 
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+        {% stylesheets
+            output='assets/css/compiled_font-awesome-ie7.css'
+            filter=''
+            '@font_awesome_ie7_css' 
+        %}
+            <!--[if IE 7]>
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            <![endif]-->
+        {% endstylesheets %}
+
+        {% image '@font_awesome_font_otf'  output='assets/font/FontAwesome.otf' %}         {% endimage %}
+        {% image '@font_awesome_font_eot'  output='assets/font/fontawesome-webfont.eot' %} {% endimage %}
+        {% image '@font_awesome_font_svg'  output='assets/font/fontawesome-webfont.svg' %} {% endimage %}
+        {% image '@font_awesome_font_ttf'  output='assets/font/fontawesome-webfont.ttf' %} {% endimage %}
+        {% image '@font_awesome_font_woff' output='assets/font/fontawesome-webfont.woff' %}{% endimage %}
+
+    {% endblock %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {% javascripts 
+        output='assets/js/compiled_all.js'
+        filter=''
+        '@jquery_js'
+        '@smoothscroll_js'
+        '@bootstrap_js'
+        '@rf_js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% javascripts 
+        output='assets/js/compiled_ie.js'
+        filter=''
+        '@html5shiv_js'
+        '@respond_js' 
+    %}
+        <!--[if lt IE 9]>
+        <script src="{{ asset_url }}"></script>
+        <![endif]-->
+    {% endjavascripts  %}
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $('.icon-tooltip    ').tooltip({
+                placement: 'top',
+                container: 'body'
+            });
+            $('.a-tooltip    ').tooltip({
+                placement: 'top',
+                container: 'body'
+            });
+        });
+
+    </script>
+
+{% endblock %}

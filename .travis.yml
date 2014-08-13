@@ -1,0 +1,28 @@
+language: php
+
+php: [5.5]
+
+env:
+    - COVERALLS_REPO_TOKEN= COVERALLS_RUN_LOCALLY=true
+
+branches:
+    only:
+        - master
+
+before_script:
+    - env
+    - git checkout master
+    - cp app/config/parameters.yml.dist app/config/parameters.yml
+    - composer self-update
+    - composer install --dev --prefer-source --no-interaction --no-progress
+    - npm install -g bower
+    - bower update
+    - php -S 127.0.0.1:8888 -t web/ &
+    - sleep 4
+
+script:
+    - bin/behat --config app/config/behat.yml --profile php-server @RfBlogBundle
+    - bin/phpspec run
+
+after_script:
+    - bin/coveralls --config app/config/coveralls.yml -vvv

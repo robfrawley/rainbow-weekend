@@ -1,0 +1,19 @@
+rw_welcome:
+    pattern:  /welcome
+    defaults: { _controller: RwWebBundle:Default:index }
+
+rw_program:
+    pattern:  /program
+    defaults: { _controller: RwWebBundle:Program:index }
+
+rw_register:
+    pattern:  /register
+    defaults: { _controller: RwWebBundle:Register:index }
+
+rw_about_committee:
+    pattern:  /about/committee
+    defaults: { _controller: RwWebBundle:About:committee }
+
+rw_about_history:
+    pattern:  /about/history
+    defaults: { _controller: RwWebBundle:About:history }

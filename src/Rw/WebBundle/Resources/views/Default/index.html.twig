@@ -1,0 +1,33 @@
+{% extends 'RwWebBundle::bootstrap.html.twig' %}
+
+{% block body %}
+
+    {% include 'RwWebBundle:Part:header.html.twig' with {'currentRoute': currentRoute} only %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Rainbow Weekend <small>17</small></h1>
+            <p>
+                Rainbow Weekend is a celebration of recovery in Narcotics Anonymous, open to all and hosted in South Florida. 
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% set posts_count = posts|length %}
+            {% set posts_col_size = 12/posts_count %}
+            {% for i, p in posts %}
+                <div class="col-lg-{{ posts_col_size }} blog-post-teaser">
+                    <h2>{{ p.getTitle }}</h2>
+                    <h4>{{ p.getPostedFormatted(get_config('rf.date_format')) }}</h4>
+                    {{ p.getEntry|swim }}
+                    <p><a class="btn btn-info" href="">Read more &raquo;</a></p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% include 'RwWebBundle:Part:footer.html.twig' only %}
+
+{% endblock %}

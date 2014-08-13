@@ -1,0 +1,19 @@
+rw_web:
+
+    maintenance_mode:
+        enable: false
+        mode: all
+        bundles: ['RfBlogBundle']
+
+    html:
+        title_pre: ~
+        title_post: ' - Rainbow Weekend'
+        charset: UTF-8
+        lang: en
+
+    brand_name: Rainbow Weekend
+
+    footer_credit: 'Designed and maintained by the Rainbow Weekend Committee.'
+    footer_copy: 'Copyright &copy; 2014 Rainbow Weekend Committee.'
+
+    date_format: 'l, F j'

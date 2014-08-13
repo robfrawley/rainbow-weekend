@@ -1,0 +1,25 @@
+{% extends 'RwWebBundle::bootstrap.html.twig' %}
+
+{% block body %}
+
+    {% include 'RwWebBundle:Part:header.html.twig' with {'currentRoute': currentRoute} only %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Speakers and Workshops</h1>
+            <p>
+                Rainbow Weekend is proud to present the following programming schedule for speakers and workshops during the convention.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        {% include 'RwWebBundle:Program:program.html.twig' with {'header': 'Main Speakers', 'program': program_main} only %}
+        {% include 'RwWebBundle:Program:program.html.twig' with {'header': 'Saturday <small>Track 1</small>', 'program': program_sat_1} only %}
+        {% include 'RwWebBundle:Program:program.html.twig' with {'header': 'Saturday <small>Track 2</small>', 'program': program_sat_2} only %}
+        {% include 'RwWebBundle:Program:program.html.twig' with {'header': 'Sunday', 'program': program_sun_1} only %}
+    </div>
+
+    {% include 'RwWebBundle:Part:footer.html.twig' only %}
+
+{% endblock %}

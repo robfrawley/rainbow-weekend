@@ -1,0 +1,23 @@
+{% extends 'RwWebBundle::bootstrap.html.twig' %}
+
+{% block body %}
+
+    {% include 'RwWebBundle:Part:header.html.twig' with {'currentRoute': currentRoute} only %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Our Committee <small>About Us</small></h1>
+            <p>
+                Here you can find a list of the trusted servents for Rainbow Weekend 17.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+            {% include 'RwWebBundle:About:committee_list.html.twig' with {'header': 'Admin', 'committee': committee_admin} only %}
+            {% include 'RwWebBundle:About:committee_list.html.twig' with {'header': 'Sub-Committee Chairs', 'committee': committee_chair} only %}
+    </div>
+
+    {% include 'RwWebBundle:Part:footer.html.twig' only %}
+
+{% endblock %}

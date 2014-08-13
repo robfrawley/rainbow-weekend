@@ -1,0 +1,36 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('rw_root') }}"><strong>{{ get_config('rf.brand_name') }}</strong></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="{% if currentRoute == 'rw_welcome' %}active{% endif %}">
+                    <a href="{{ path('rw_welcome') }}">Welcome</a>
+                </li>
+                <li class="{% if currentRoute == 'rw_program' %}active{% endif %}">
+                    <a href="{{ path('rw_program') }}">Program</a>
+                </li>
+                <li class="{% if currentRoute == 'rw_register' %}active{% endif %}">
+                    <a href="{{ path('rw_register') }}">Register</a>
+                </li>
+                <li class="dropdown {% if currentRoute == 'rw_about_committee' or currentRoute == 'rw_about_history' %}active{% endif %}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ path('rw_about_history') }}">History</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('rw_about_committee') }}">Committee</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
