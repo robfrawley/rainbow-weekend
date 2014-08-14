@@ -30,7 +30,7 @@ assetic:
         font_awesome_css:
             inputs:
                 - '%kernel.root_dir%/../component/font-awesome/css/font-awesome.css'
-            filters: [cssrewrite,yui_css]
+            filters: [yui_css]
         font_awesome_font_otf:
             inputs:
                 - '%kernel.root_dir%/../component/font-awesome/fonts/FontAwesome.otf'

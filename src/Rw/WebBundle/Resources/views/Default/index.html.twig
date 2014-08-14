@@ -4,21 +4,53 @@
 
     {% include 'RwWebBundle::_jumbotron.html.twig' with {
         'header': 'Rainbow Weekend <small>17</small>',
-        'lead'  : 'Rainbow Weekend is a celebration of recovery in Narcotics Anonymous, open to all and hosted in South Florida.'
+        'lead'  : 'Rainbow Weekend is a celebration of recovery in Narcotics Anonymous, open to all and hosted in South Florida on <em>November 21, 22, and 23</em>.'
     } only %}
 
     <div class="container">
         <div class="row">
-            {% set posts_count = posts|length %}
-            {% set posts_col_size = 12/posts_count %}
-            {% for i, p in posts %}
-                <div class="col-lg-{{ posts_col_size }} blog-post-teaser">
-                    <h2>{{ p.getTitle }}</h2>
-                    <h4>{{ p.getPostedFormatted(get_config('rf.date_format')) }}</h4>
-                    {{ p.getEntry|swim }}
-                    <p><a class="btn btn-info" href="">Read more &raquo;</a></p>
-                </div>
-            {% endfor %}
+            <div class="col-md-4 text-center">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
+                </span>
+                <h2>Hotel</h2>
+                <p>
+                    The newly renovated host hotel is on a six-acre nature preserve minutes from the beach, airport, local recreation and attractions.
+                    <em>Reserve a room early as there are limited quantities available.</em>
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-md" href="{{ path('rw_register_hotel') }}" role="button">Hotel Info »</a>
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-ticket fa-stack-1x fa-inverse"></i>
+                </span>
+                <h2>Tickets</h2>
+                <p>
+                    Rainbow Weekend is an amazing adventure in recovery. Buy tickets for the convention, banquet, or breakfast now!
+                    <em>The speaker meetings are supported through seventh tradition funds.</em>
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-md" href="{{ path('rw_register_convention') }}" role="button">Ticket Info »</a>
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-calendar fa-stack-1x fa-inverse"></i>
+                </span>
+                <h2>Program</h2>
+                <p>
+                    Every year our <a href="{{ path('rw_about_committee') }}">committee</a> works hard to bring a diverse array of speakers to the convention from different areas.
+                    <em>Find out what our schedule looks like this year!</em>
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-md" href="{{ path('rw_program') }}" role="button">Program Info »</a>
+                </p>
+            </div>
         </div>
     </div>
 

@@ -3,15 +3,31 @@
 {% block content %}
 
     {% include 'RwWebBundle::_jumbotron.html.twig' with {
-        'header': 'Program <small>Speakers and Workshops</small>',
+        'header': 'Program',
         'lead'  : 'Rainbow Weekend is proud to present the following programming schedule for speakers and workshops during the convention.'
     } only %}
 
     <div class="container">
-        {% include 'RwWebBundle:Program:_program.html.twig' with {'header': 'Main Speakers',      'program': program_main} only %}
-        {% include 'RwWebBundle:Program:_program.html.twig' with {'header': 'Saturday (Track 1)', 'program': program_sat_1} only %}
-        {% include 'RwWebBundle:Program:_program.html.twig' with {'header': 'Saturday (Track 2)', 'program': program_sat_2} only %}
-        {% include 'RwWebBundle:Program:_program.html.twig' with {'header': 'Sunday',             'program': program_sun_1} only %}
+        {% include 'RwWebBundle:Program:_program.html.twig' with {
+            'header' : 'Main Speakers',      
+            'program': program_main,
+            'desc'   : 'Our main speaker events occur Friday and Saturday night, as well as Sunday monring. Our Friday meeting includes a clean-time countdown, an amazing experience for everyone.'
+        } only %}
+        {% include 'RwWebBundle:Program:_program.html.twig' with {
+            'header' : 'Saturday (Track 1)', 
+            'program': program_sat_1,
+            'desc'   : 'Our Staurday schedule includes two different workshop tracts. Both offer excellent topics&mdash;choose your poison.'
+        } only %}
+        {% include 'RwWebBundle:Program:_program.html.twig' with {
+            'header' : 'Saturday (Track 2)', 
+            'program': program_sat_2,
+            'desc'   : 'Our Staurday schedule includes two different workshop tracts. Both offer excellent topics&mdash;choose your poison.'
+        } only %}
+        {% include 'RwWebBundle:Program:_program.html.twig' with { 
+            'header' : 'Sunday',             
+            'program': program_sun_1,
+            'desc'   : 'Prior to the closing Sunday main speaker, we offer an early morning Just for Today meeting, offering convention guests a truly splendid way to wake-up.'
+        } only %}
     </div>
 
 {% endblock %}

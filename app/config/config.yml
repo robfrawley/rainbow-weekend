@@ -56,3 +56,6 @@ swiftmailer:
 
 kwattro_markdown:
     renderer: html
+
+scribe_stripe:
+  api_key: ''

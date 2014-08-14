@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Kwattro\MarkdownBundle\KwattroMarkdownBundle(),
+            new Scribe\StripeBundle\ScribeStripeBundle(),
             new Rw\WebBundle\RwWebBundle(),
         );
 

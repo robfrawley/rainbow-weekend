@@ -10,9 +10,13 @@ rw_program:
     pattern:  /program
     defaults: { _controller: RwWebBundle:Program:index }
 
-rw_register:
-    pattern:  /register
+rw_register_convention:
+    pattern:  /register/convention
     defaults: { _controller: RwWebBundle:Register:index }
+
+rw_register_hotel:
+    pattern:  /register/hotel
+    defaults: { _controller: RwWebBundle:Register:hotel }
 
 rw_about_committee:
     pattern:  /about/committee

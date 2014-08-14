@@ -4,21 +4,24 @@
 
     {% include 'RwWebBundle::_jumbotron.html.twig' with {
         'header': 'Committee', 
-        'lead'  : 'Here you can find a list of the trusted servents for Rainbow Weekend 17.'
+        'lead'  : 'Meet your trusted servents for Rainbow Weekend 17, tirelessly working over the past year to put-together an amazing convention.'
     } only %}
 
     <div class="container">
         {% include 'RwWebBundle:About:_committee_list.html.twig' with {
             'header'   : 'Admin', 
-            'committee': committee_admin
+            'committee': committee_admin,
+            'desc'     : 'The Admin committee is comprised of the chair, vice-chair, treasurer, assistant treasurer, secretary, hotel liason, and communications liason. These positions are integral to facilitating a working and structured committee.'
         } only %}
         {% include 'RwWebBundle:About:_committee_list.html.twig' with {
             'header'   : 'Sub-Committee Chairs', 
-            'committee': committee_chair
+            'committee': committee_chair,
+            'desc'     : 'The sub-committee chairs head their respective area within the convention. These sub-committees are always in need of individuals to help us achieve our vision for Rainbow Weekend.'
         } only %}
         {% include 'RwWebBundle:About:_committee_list.html.twig' with {
             'header'   : 'Group Representatives', 
-            'committee': committee_representative
+            'committee': committee_representative,
+            'desc'     : 'Group liasons act as a conduit between their group and the committe&mdash;working to bring information back to the sponsor groups about developments and progress wihin the Rainbow Weekend committee.'
         } only %}
     </div>
 
