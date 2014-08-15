@@ -57,3 +57,23 @@
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='@start', endColorstr='@stop');
     -ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='@start', endColorstr='@stop')";
 }
+
+ .box-shadow-important(@shadow) {
+    -webkit-box-shadow: @shadow !important;
+    box-shadow: @shadow !important;
+}
+
+.make-affix-col(@columns, @topoffset) {
+    top: @topoffset;
+    @media (min-width: @screen-md-min) {
+        width: (@container-md/@grid-columns*@columns)-(@grid-gutter-width) !important;
+    }
+    @media (max-width: @screen-md-min) {
+        width: (@container-sm/@grid-columns*@columns)-(@grid-gutter-width) !important;
+    }
+    @media (max-width: @screen-sm-min) {
+        width:100% !important;
+        position:relative !important;
+        top:0px !important;
+    }
+}

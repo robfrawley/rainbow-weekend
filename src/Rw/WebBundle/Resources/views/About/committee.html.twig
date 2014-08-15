@@ -4,25 +4,209 @@
 
     {% include 'RwWebBundle::_jumbotron.html.twig' with {
         'header': 'Committee', 
-        'lead'  : 'Meet your trusted servents for Rainbow Weekend 17, tirelessly working over the past year to put-together an amazing convention.'
+        'lead'  : 'Meet your trusted servents for Rainbow Weekend 17, tirelessly working over the past year to put together an amazing convention.'
     } only %}
 
     <div class="container">
-        {% include 'RwWebBundle:About:_committee_list.html.twig' with {
-            'header'   : 'Admin', 
-            'committee': committee_admin,
-            'desc'     : 'The Admin committee is comprised of the chair, vice-chair, treasurer, assistant treasurer, secretary, hotel liason, and communications liason. These positions are integral to facilitating a working and structured committee.'
-        } only %}
-        {% include 'RwWebBundle:About:_committee_list.html.twig' with {
-            'header'   : 'Sub-Committee Chairs', 
-            'committee': committee_chair,
-            'desc'     : 'The sub-committee chairs head their respective area within the convention. These sub-committees are always in need of individuals to help us achieve our vision for Rainbow Weekend.'
-        } only %}
-        {% include 'RwWebBundle:About:_committee_list.html.twig' with {
-            'header'   : 'Group Representatives', 
-            'committee': committee_representative,
-            'desc'     : 'Group liasons act as a conduit between their group and the committe&mdash;working to bring information back to the sponsor groups about developments and progress wihin the Rainbow Weekend committee.'
-        } only %}
+        <div class="committee">
+            <div class="servants">
+                <p class="lead">
+                    The committee consists of admin, the sub-committee chairs, and the group representatives.
+                </p>
+                {% include 'RwWebBundle:About:_committee_list.html.twig' with {
+                    'header'   : 'Admin', 
+                    'committee': committee_admin,
+                    'desc'     : 'The Admin committee is integral to facilitating a working and structured committee.'
+                } only %}
+                {% include 'RwWebBundle:About:_committee_list.html.twig' with {
+                    'header'   : 'Sub-Committee Chairs', 
+                    'committee': committee_chair,
+                    'desc'     : 'The sub-committee chairs head their respective area and are always in need of individuals provide assistance.'
+                } only %}
+                {% include 'RwWebBundle:About:_committee_list.html.twig' with {
+                    'header'   : 'Group Representatives', 
+                    'committee': committee_representative,
+                    'desc'     : 'Group liasons act as a conduit between the sponsor group and the committe&mdash;working to exchange information between the two.'
+                } only %}
+            </div>
+            <div class="contact">
+                <div class="panel panel-general">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Contact Us</h3>
+                    </div>
+                    <div class="panel-body">
+                        {% if form_submitted == false %}
+                            {{ form_start(form_contact, {attr: {id: 'form-contact-type', 'novalidate': 'novalidate', 'class': 'rw'}}) }}
+                                {{ form_errors(form_contact) }}
+
+                                <div class="form-group">
+                                    {{ form_label(form_contact.name) }}
+                                    {{ 
+                                        form_widget(
+                                            form_contact.name, 
+                                            {
+                                                attr: 
+                                                    {
+                                                        class        : 'form-control',
+                                                        'placeholder': 'Enter your full name'
+                                                    },
+                                            }
+                                        )
+                                    }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form_contact.phone) }}
+                                    {{ 
+                                        form_widget(
+                                            form_contact.phone, 
+                                            {
+                                                attr: 
+                                                    {
+                                                        class        : 'form-control',
+                                                        'placeholder': 'Optionally enter your phone'
+                                                    },
+                                            }
+                                        )
+                                    }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form_contact.email) }}
+                                    {{ 
+                                        form_widget(
+                                            form_contact.email, 
+                                            {
+                                                attr: 
+                                                    {
+                                                        class        : 'form-control',
+                                                        'placeholder': 'Enter your email address'
+                                                    },
+                                            }
+                                        )
+                                    }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form_contact.message) }}
+                                    {{ 
+                                        form_widget(
+                                            form_contact.message, 
+                                            {
+                                                attr: 
+                                                    {
+                                                        rows         : 6,
+                                                        class        : 'form-control',
+                                                        'placeholder': 'Enter a brief message for the committee'
+                                                    },
+                                            }
+                                        )
+                                    }}
+                                </div>
+                                <div class="form-group form-group-captch-sm">
+                                    {{ form_label(form_contact.captcha) }}
+                                    {{ 
+                                        form_widget(
+                                            form_contact.captcha, 
+                                            {
+                                                attr: 
+                                                    {
+                                                        class        : 'form-control',
+                                                        'placeholder': 'Enter the validation code'
+                                                    },
+                                            }
+                                        )
+                                    }}
+                                    <div class="form-captcha-error">
+                                        {{ form_errors(form_contact.captcha) }}
+                                    </div>
+                                </div>
+                                <div class="form-submit">
+                                    <button role="submit" type="submit" name="form-contact-type-submit" class="btn btn-sm btn-info btn-block">Send Message</button>
+                                </div>
+
+                            {{ form_end(form_contact) }}
+                        {% else %}
+                            <h4>Request Sent</h4>
+                            <p>
+                                Your message to the Rainbow Weekend committee had been sent successfully. We will get back to you shortly.
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        $(document).ready(function() {
+
+            $('#contact_type_captcha').removeAttr('required');
+
+            $('#form-contact-type').bootstrapValidator({
+                feedbackIcons: {
+                    valid: 'fa fa-check',
+                    invalid: 'fa fa-times',
+                    validating: 'fa fa-refresh fa-spin'
+                },
+                fields: {
+                    name: {
+                        selector  : '#contact_type_name',
+                        validators: {
+                            notEmpty: {
+                                message: 'You must enter your full name.'
+                            }
+                        }
+                    },
+                    email: {
+                        selector  : '#contact_type_email',
+                        validators: {
+                            notEmpty: {
+                                message: 'You must enter an email address.'
+                            },
+                            emailAddress: {
+                                message: 'You must enter a valid email address.'
+                            }
+                        }
+                    },
+                    phone: {
+                        selector  : '#contact_type_phone',
+                        validators: {
+                            phone: {
+                                message: 'You must enter a valid phone number.',
+                                country: 'US'
+                            }
+                        }
+                    },
+                    message: {
+                        selector  : '#contact_type_message',
+                        validators: {
+                            notEmpty: {
+                                message: 'You must enter a message.'
+                            }
+                        }
+                    },
+                    captcha: {
+                        selector  : '#contact_type_captcha',
+                        validators: {
+                            notEmpty: {
+                                message: 'You must enter the security code.'
+                            },
+                            stringLength: {
+                                message  : 'Please enter the the 6 digit security code.',
+                                threshold: 6,
+                                min      : 6,
+                                max      : 6
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+    </script>
 
 {% endblock %}

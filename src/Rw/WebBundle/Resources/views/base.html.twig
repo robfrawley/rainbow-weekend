@@ -5,10 +5,11 @@
     {% block stylesheetsInternal %}
 
         {% stylesheets
-            output='assets/css/compiled.css'
+            output='assets/css/compiled-all.css'
             filter=''
             '@rw_less'
-            '@font_awesome_css' 
+            '@font_awesome_css'
+            '@boostrapvalidator_css'
         %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
@@ -26,11 +27,12 @@
 {% block javascripts %}
 
     {% javascripts 
-        output='assets/js/compiled.js'
+        output='assets/js/compiled-all.js'
         filter=''
         '@jquery_js'
         '@smoothscroll_js'
         '@bootstrap_js'
+        '@boostrapvalidator_js'
         '@rw_js'
     %}
         <script src="{{ asset_url }}"></script>

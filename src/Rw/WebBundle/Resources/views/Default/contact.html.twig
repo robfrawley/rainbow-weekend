@@ -1,0 +1,186 @@
+{% extends 'RwWebBundle::base.html.twig' %}
+
+{% block content %}
+
+    {% include 'RwWebBundle::_jumbotron.html.twig' with {
+        'header': 'Contact', 
+        'lead'  : 'Have any ideas or questions you would like to direct to the committee? Let us know!'
+    } only %}
+
+    <div class="container">
+        <div class="contact">
+            <div class="general">
+                {% if form_submitted == false %}
+                    <h1>Send Us Your Thoughts</h1>
+                    {{ form_start(form_contact, {attr: {id: 'form-contact-type', 'novalidate': 'novalidate', 'class': 'rw'}}) }}
+                        {{ form_errors(form_contact) }}
+
+                        <div class="form-group">
+                            {{ form_label(form_contact.name) }}
+                            {{ 
+                                form_widget(
+                                    form_contact.name, 
+                                    {
+                                        attr: 
+                                            {
+                                                class        : 'form-control',
+                                                'placeholder': 'Enter your full name'
+                                            },
+                                    }
+                                )
+                            }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form_contact.phone) }}
+                            {{ 
+                                form_widget(
+                                    form_contact.phone, 
+                                    {
+                                        attr: 
+                                            {
+                                                class        : 'form-control',
+                                                'placeholder': 'Optionally enter your phone'
+                                            },
+                                    }
+                                )
+                            }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form_contact.email) }}
+                            {{ 
+                                form_widget(
+                                    form_contact.email, 
+                                    {
+                                        attr: 
+                                            {
+                                                class        : 'form-control',
+                                                'placeholder': 'Enter your email address'
+                                            },
+                                    }
+                                )
+                            }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form_contact.message) }}
+                            {{ 
+                                form_widget(
+                                    form_contact.message, 
+                                    {
+                                        attr: 
+                                            {
+                                                rows         : 6,
+                                                class        : 'form-control',
+                                                'placeholder': 'Enter a brief message for the committee'
+                                            },
+                                    }
+                                )
+                            }}
+                        </div>
+                        <div class="form-group form-group-captch-sm">
+                            {{ form_label(form_contact.captcha) }}
+                            {{ 
+                                form_widget(
+                                    form_contact.captcha, 
+                                    {
+                                        attr: 
+                                            {
+                                                class        : 'form-control',
+                                                'placeholder': 'Enter the validation code'
+                                            },
+                                    }
+                                )
+                            }}
+                            <div class="form-captcha-error">
+                                {{ form_errors(form_contact.captcha) }}
+                            </div>
+                        </div>
+                        <div class="form-submit text-center">
+                            <button role="submit" type="submit" name="form-contact-type-submit" class="btn btn-sm btn-info">Send Message</button>
+                        </div>
+
+                    {{ form_end(form_contact) }}
+                {% else %}
+                    <h1>Request Sent</h1>
+                    <p>
+                        Your message to the Rainbow Weekend committee had been sent successfully. We will get back to you shortly.
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        $(document).ready(function() {
+
+            $('#contact_type_captcha').removeAttr('required');
+
+            $('#form-contact-type').bootstrapValidator({
+                feedbackIcons: {
+                    valid: 'fa fa-check',
+                    invalid: 'fa fa-times',
+                    validating: 'fa fa-refresh fa-spin'
+                },
+                fields: {
+                    name: {
+                        selector  : '#contact_type_name',
+                        validators: {
+                            notEmpty: {
+                                message: 'You must enter your full name.'
+                            }
+                        }
+                    },
+                    email: {
+                        selector  : '#contact_type_email',
+                        validators: {
+                            notEmpty: {
+                                message: 'You must enter an email address.'
+                            },
+                            emailAddress: {
+                                message: 'You must enter a valid email address.'
+                            }
+                        }
+                    },
+                    phone: {
+                        selector  : '#contact_type_phone',
+                        validators: {
+                            phone: {
+                                message: 'You must enter a valid phone number.',
+                                country: 'US'
+                            }
+                        }
+                    },
+                    message: {
+                        selector  : '#contact_type_message',
+                        validators: {
+                            notEmpty: {
+                                message: 'You must enter a message.'
+                            }
+                        }
+                    },
+                    captcha: {
+                        selector  : '#contact_type_captcha',
+                        validators: {
+                            notEmpty: {
+                                message: 'You must enter the security code.'
+                            },
+                            stringLength: {
+                                message  : 'Please enter the the 6 digit security code.',
+                                threshold: 6,
+                                min      : 6,
+                                max      : 6
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+    </script>
+
+{% endblock %}

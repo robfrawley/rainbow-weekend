@@ -4,45 +4,37 @@
 
     {% include 'RwWebBundle::_jumbotron.html.twig' with {
         'header': 'Hotel',
-        'lead'  : 'We are pleased to host the Rainbow Weekend convention at Marriott North. Reserve a room early as there are limited quantities available.'
+        'lead'  : 'We are pleased to host Rainbow Weekend at Marriott North. Reserve a room early as there are limited quantities available.'
     } only %}
 
     <div class="container">
-        <div class="row">
-            <div class="col-sm-8">
-                <h1>Location</h1>
-                <p>
+        <div class="hotel">
+            <div class="general">
+                <p class="lead">
                     The newly renovated host hotel is on a six-acre nature preserve minutes from the beach, airport, local recreation and attractions.
                 </p>
-                <div class="well text-center">
+                <div class="callout callout-info">
                     <p>
                         <strong>Marriott North</strong></br />
                         6650 N Andrews Avenue<br />
                         Fort Lauderdale, FL 33309
                     </p>
                 </div>
-                <h1>Pricing and Limitation</h1>
-                <ul>
-                    <li>
-                        The convention will be held from <strong>November 21<sup>st</sup></strong> through <strong>November 23<sup>rd</sup></strong>.
-                    <li>
-                        Rainbow Weekend room rate is priced at <strong>$85.00 per night</strong>.
-                    </li>
-                    <li>
-                        Reservations will be accepted through <strong>October 21</strong>, or until our room block is filled.
-                    </li>
-                </ul>
-                <h1>Booking Information</h1>
                 <p>
-                    You can book your hotel stay online via the <a href="http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Rainbow%20Weekend%5EFLLCC%60rairaia%6085.00%60USD%60false%6011/19/14%6011/25/14%6011/7/2014&app=resvlink&stop_mobi=yes">Marriott</a> website. Alternativly, you can book by calling Marriott's booking desk via <a href="tel:954-771-0440">954-771-0440</a> or <a href="tel:800-319-5705">800-319-5705</a>. <em>Be sure to ask for the Rainbow Weekend rates.</em>
+                    The convention will be held from <strong>November 21<sup>st</sup></strong> through <strong>November 23<sup>rd</sup></strong>. Rainbow Weekend room rate is priced at <strong>$85.00 per night</strong>. Reservations will be accepted through <strong>October 21</strong>, or until our room block is filled. Reserve a room early as there are limited quantities available.
                 </p>
-                
-                <div class="btn-group btn-group-justified">
-                    <a class="btn btn-md btn-primary" href="http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Rainbow%20Weekend%5EFLLCC%60rairaia%6085.00%60USD%60false%6011/19/14%6011/25/14%6011/7/2014&app=resvlink&stop_mobi=yes"><span class="fa fa-signal"></span> Book Hotel Online</a>
-                    <a class="btn btn-md btn-primary" href="tel:954-771-0440"><span class="fa fa-phone"></span> Phone 954-771-0440</a>
-                </div>
+                <h1>Booking Your Room</h1>
+                <p>
+                    You can book your hotel stay quickly and conveniently online via the Marriott website. Alternativly, you can book by calling Marriott directly via their local number <code>+1.954.771.0440</code> or their toll-free number <code>+1.800.319.5705</code>.
+                </p>
+                <div class="callout callout-info">
+                    <p>
+                        If you choose to phone your reservation, be sure to ask for the Rainbow Weekend rates. Using the online registration link below automatically selects Rainbow Weekend's reduced rate.
+                    </p>
+                </div>                
+                <a class="btn btn-md btn-primary" href="http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Rainbow%20Weekend%5EFLLCC%60rairaia%6085.00%60USD%60false%6011/19/14%6011/25/14%6011/7/2014&app=resvlink&stop_mobi=yes"><span class="fa fa-suitcase"></span> Book Hotel Online</a>
             </div>
-            <div class="col-sm-4">
+            <div class="pictures">
                 <p><img class="img-responsive img-thumbnail" src="/bundles/rwweb/images/marriott_1.jpg" /></p>
                 <p><img class="img-responsive img-thumbnail" src="/bundles/rwweb/images/marriott_2.jpg" /></p>
                 <p><img class="img-responsive img-thumbnail" src="/bundles/rwweb/images/marriott_3.jpg" /></p>

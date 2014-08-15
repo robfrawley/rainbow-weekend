@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Kwattro\MarkdownBundle\KwattroMarkdownBundle(),
             new Scribe\StripeBundle\ScribeStripeBundle(),
+            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
             new Rw\WebBundle\RwWebBundle(),
         );
 

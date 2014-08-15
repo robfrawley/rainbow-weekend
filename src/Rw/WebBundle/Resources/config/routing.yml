@@ -6,13 +6,29 @@ rw_welcome:
     pattern:  /welcome
     defaults: { _controller: RwWebBundle:Default:index }
 
+rw_contact:
+    pattern:  /contact
+    defaults: { _controller: RwWebBundle:Default:contact }
+
 rw_program:
     pattern:  /program
     defaults: { _controller: RwWebBundle:Program:index }
 
+rw_register_convention_add:
+    pattern:  /register/convention/__/add/{item}
+    defaults: { _controller: RwWebBundle:Register:itemAdd }
+
+rw_register_convention_clear:
+    pattern:  /register/convention/__/clear
+    defaults: { _controller: RwWebBundle:Register:itemClear }
+
+rw_register_convention_checkout:
+    pattern:  /register/convention/checkout
+    defaults: { _controller: RwWebBundle:Register:itemCheckout }
+
 rw_register_convention:
     pattern:  /register/convention
-    defaults: { _controller: RwWebBundle:Register:index }
+    defaults: { _controller: RwWebBundle:Register:itemList }
 
 rw_register_hotel:
     pattern:  /register/hotel

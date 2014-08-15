@@ -1,12 +1,13 @@
 <h1>{{ header|raw }}</h1>
-<p>{{ desc|raw }}</p>
+<div class="callout callout-info">
+    <p>{{ desc|raw }}</p>
+</div>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th width="30%">Position</th>
-            <th width="30%">Name</th>
-            <th width="25%">Phone</th>
-            <th width="25%">Email</th>
+            <th>Position</th>
+            <th>Name</th>
+            <th>Phone</th>
         </tr>
     </thead>
     <tbody>
@@ -14,24 +15,17 @@
             <tr>
                 <td>{{ c.getPosition }}</td>
                 <td>
-                    {% if c.getName != null %}
-                        {{ c.getName }}
+                    {% if c.getEmail != null %}
+                        <a href="mailto:{{ c.getEmail }}">{{ c.getName }}</a>
                     {% else %}
-                        <em class="text-muted">Position Open</em>
+                        {{ c.getName }}
                     {% endif %}
                 </td>
                 <td>
                     {% if c.getPhone != null %}
                         <a href="tel:{{ c.getPhone }}">{{ c.getPhone }}</a>
                     {% else %}
-                        <em class="text-muted">None</em>
-                    {% endif %}
-                </td>
-                <td>
-                    {% if c.getEmail != null %}
-                        <a href="mailto:{{ c.getEmail }}">{{ c.getEmailShort }}</a>
-                    {% else %}
-                        <em class="text-muted">None</em>
+                        <span class="text-muted">None</span>
                     {% endif %}
                 </td>
             </tr>

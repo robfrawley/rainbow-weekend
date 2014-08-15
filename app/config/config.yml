@@ -48,14 +48,30 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    username:  %mailer_user%
-    password:  %mailer_password%
-    spool:     { type: memory }
+    transport:  %mailer_transport%
+    host:       %mailer_host%
+    username:   %mailer_user%
+    password:   %mailer_password%
+    port:       465
+    encryption: ssl 
+    auth_mode:  login
 
 kwattro_markdown:
     renderer: html
 
 scribe_stripe:
-  api_key: ''
+    api_key: sk_test_4a1tSp5RdT8UoC0bszFlVUbD
+
+gregwar_captcha: 
+    width:            500
+    height:           120
+    length:           6
+    quality:          75
+    charset:          'abcdefhjkmnprstuvwxyz23456789'
+    reload:           true
+    as_url:           true
+    expiration:       120
+    invalid_message:  'An invalid captcha value was entered. Please try again.'
+    background_color: [255,255,255]
+    interpolation:    true
+    distortion:       true

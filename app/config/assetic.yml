@@ -69,6 +69,12 @@ assetic:
                 - '%kernel.root_dir%/../component/bootstrap/js/collapse.js'
                 - '%kernel.root_dir%/../component/bootstrap/js/carousel.js'
                 - '%kernel.root_dir%/../component/bootstrap/js/affix.js'
+        boostrapvalidator_js:
+            inputs:
+                - '%kernel.root_dir%/../component/bootstrapvalidator/dist/js/bootstrapValidator.js'
+        boostrapvalidator_css:
+            inputs:
+                - '%kernel.root_dir%/../component/bootstrapvalidator/dist/css/bootstrapValidator.css'
         respond_js:
             inputs:
                 - '%kernel.root_dir%/../component/respond/respond.src.js'

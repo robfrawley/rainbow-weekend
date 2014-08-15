@@ -1,0 +1,56 @@
+Rw\WebBundle\Entity\RegisterItem:
+    type: entity
+    table: null
+    repositoryClass: Rw\WebBundle\Entity\RegisterItemRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: 255
+        description:
+            type: text
+            nullable: true
+        costDonation:
+            type: boolean
+        costDollars:
+            type: integer
+        costCents:
+            type: integer
+        datetimeStart:
+            type: datetime
+            nullable: true
+        datetimeEnd:
+            type: datetime
+            nullable: true
+        dateformatStart:
+            type: string
+            length: 40
+            nullable: true
+        dateformatEnd:
+            type: string
+            length: 40
+            nullable: true
+        datetimeLaunch:
+            type: datetime
+            nullable: true
+        datetimeCutoff:
+            type: datetime
+            nullable: true
+        statementDescription:
+            type: string
+            length: 16
+            nullable: true
+        weight:
+            type: integer
+        metadata:
+            type: json_array
+            nullable: true
+    manyToOne:
+        group:
+            targetEntity: RegisterItemGroup
+            inversedBy: items
+    lifecycleCallbacks: {  }

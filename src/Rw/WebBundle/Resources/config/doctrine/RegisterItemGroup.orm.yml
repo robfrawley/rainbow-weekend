@@ -1,0 +1,22 @@
+Rw\WebBundle\Entity\RegisterItemGroup:
+    type: entity
+    table: null
+    repositoryClass: Rw\WebBundle\Entity\RegisterItemGroupRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: 255
+        weight:
+            type: integer
+    oneToMany:
+        items:
+            targetEntity: RegisterItem
+            mappedBy: group
+            orderBy: 
+                weight: ASC
+    lifecycleCallbacks: {  }

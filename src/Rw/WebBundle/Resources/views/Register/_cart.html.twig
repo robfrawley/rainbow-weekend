@@ -1,0 +1,43 @@
+<div class="panel panel-general affix-col-4" data-spy="affix" data-offset-top="245" data-offset-bottom="80">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            Your Cart
+            {% if cart_total > 0 %} 
+                <span class="pull-right">(${{ cart_total }}.00)</span>
+            {% endif %}
+        </h3>
+    </div>
+    <div class="list-group">
+        {% for id, item in selected_items %}
+            <span class="list-group-item">
+                <h4 class="list-group-item-heading">{{ item.getName }}</h4>
+                <p class="list-group-item-text">
+                    <strong>${{ item.costDollars*countable_items[id] }}.00</strong>
+                    {% if countable_items[id] > 1 %}
+                        (${{ item.costDollars }}.00 x {{ countable_items[id] }})
+                    {% endif %}
+                </p>
+            </span>
+        {% else %}
+            <span class="list-group-item">
+              <h4 class="list-group-item-heading">No Items</h4>
+              <p class="list-group-item-text">You have no items in your cart at this time.</p>
+            </span>
+        {% endfor %}
+    </div>
+    {% if selected_items|length > 0 and checkout != true %}
+        <div class="panel-body">
+            <div class="btn-group btn-group-justified">
+                <a class="btn btn-sm btn-primary" href="{{ path('rw_register_convention_checkout') }}"><i class="fa fa-fw fa-shopping-cart"></i> Checkout</a>
+                <a class="btn btn-sm btn-warning" href="{{ path('rw_register_convention_clear') }}"><i class="fa fa-fw fa-ban"></i> Clear Cart</a>
+            </div>
+        </div>
+    {% elseif selected_items|length > 0 and checkout == true %}
+        <div class="panel-body">
+            <div class="btn-group btn-group-justified">
+                <a class="btn btn-sm btn-primary" href="{{ path('rw_register_convention') }}"><i class="fa fa-fw fa-mail-reply"></i> Add More</a>
+                <a class="btn btn-sm btn-warning" href="{{ path('rw_register_convention_clear') }}"><i class="fa fa-fw fa-ban"></i> Clear Cart</a>
+            </div>
+        </div>
+    {% endif %}
+</div>  

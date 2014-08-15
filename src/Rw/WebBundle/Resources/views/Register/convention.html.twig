@@ -1,0 +1,52 @@
+{% extends 'RwWebBundle::base.html.twig' %}
+
+{% block content %}
+
+    {% include 'RwWebBundle::_jumbotron.html.twig' with {
+        'header': 'Tickets',
+        'lead'  : 'You can purchase the full package or a subset of items for the convention.'
+    } only %}
+
+    <div class="container">
+        <div class="register">
+            <div class="items">
+                <p class="lead">
+                    The below items are available to purchase using any major credit card.
+                </p>
+                {% for group in groups %}
+                    <h1>{{ group.getName }}</h1>
+                    {% for item in group.getItemsCurrent %}
+                        <div class="item">
+                            <h4 class="title">
+                                {{ item.name }}<br />
+                                <small>
+                                    {{ item.datetimeStart.format(item.dateformatStart) }}
+                                    {% if item.datetimeEnd != null %}
+                                        to {{ item.datetimeEnd.format(item.dateformatEnd) }}
+                                    {% endif %}
+                                </small>
+                            </h4>
+                            <p class="price">
+                                {% if item.costDonation %}
+                                    Donation
+                                {% else %}
+                                    ${{ item.costDollars }}.00
+                                {% endif %}
+                            </p>
+                            <p class="desc">
+                                {{ item.description }}
+                            </p>
+                            <p class="buy">
+                                <a href="{{ path('rw_register_convention_add', {item: item.id}) }}">Add</a>
+                            </p>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="cart">
+                {% include 'RwWebBundle:Register:_cart.html.twig' with {checkout: false} %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
