@@ -3,7 +3,7 @@
         <h3 class="panel-title">
             Your Cart
             {% if cart_total > 0 %} 
-                <span class="pull-right">(${{ cart_total }}.00)</span>
+                <span class="pull-right">${{ cart_total }}.00</span>
             {% endif %}
         </h3>
     </div>
@@ -25,14 +25,14 @@
             </span>
         {% endfor %}
     </div>
-    {% if selected_items|length > 0 and checkout != true %}
+    {% if selected_items|length > 0 and checkout != true and done != true %}
         <div class="panel-body">
             <div class="btn-group btn-group-justified">
                 <a class="btn btn-sm btn-primary" href="{{ path('rw_register_convention_checkout') }}"><i class="fa fa-fw fa-shopping-cart"></i> Checkout</a>
                 <a class="btn btn-sm btn-warning" href="{{ path('rw_register_convention_clear') }}"><i class="fa fa-fw fa-ban"></i> Clear Cart</a>
             </div>
         </div>
-    {% elseif selected_items|length > 0 and checkout == true %}
+    {% elseif selected_items|length > 0 and checkout == true and done != true %}
         <div class="panel-body">
             <div class="btn-group btn-group-justified">
                 <a class="btn btn-sm btn-primary" href="{{ path('rw_register_convention') }}"><i class="fa fa-fw fa-mail-reply"></i> Add More</a>

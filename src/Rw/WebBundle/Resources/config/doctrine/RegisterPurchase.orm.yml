@@ -1,0 +1,62 @@
+Rw\WebBundle\Entity\RegisterPurchase:
+    type: entity
+    table: null
+    repositoryClass: Rw\WebBundle\Entity\RegisterPurchaseRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        fullName:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        phone:
+            type: string
+            length: 255
+        cleanDate:
+            type: datetime
+        addressLine01:
+            type: string
+            length: 255
+        addressLine02:
+            type: string
+            length: 255
+            nullable: true
+        addressCity:
+            type: string
+            length: 255
+        addressState:
+            type: string
+            length: 255
+        addressZip:
+            type: string
+            length: 255
+        chargeId:
+            type: string
+            length: 255
+        chargeCardId:
+            type: string
+            length: 255
+        chargeCvcCheck:
+            type: boolean
+        chargeAddressLine01Check:
+            type: boolean
+        chargeAddressZipCheck:
+            type: boolean
+        chargeAmount:
+            type: integer
+        chargeState:
+            type: boolean
+        chargeResponse:
+            type: text
+        notes:
+            type: text
+            nullable: true
+    manyToMany:
+        items:
+            targetEntity: RegisterItem
+    lifecycleCallbacks: {  }

@@ -11,7 +11,7 @@
         <div class="register">
             <div class="items">
                 <p class="lead">
-                    The below items are available to purchase using any major credit card.
+                    Choose any combination of the below items.
                 </p>
                 {% for group in groups %}
                     <h1>{{ group.getName }}</h1>
@@ -44,7 +44,7 @@
                 {% endfor %}
             </div>
             <div class="cart">
-                {% include 'RwWebBundle:Register:_cart.html.twig' with {checkout: false} %}
+                {% include 'RwWebBundle:Register:_cart.html.twig' with {checkout: false, done: false} %}
             </div>
         </div>
     </div>

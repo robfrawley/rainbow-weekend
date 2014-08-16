@@ -60,13 +60,13 @@ kwattro_markdown:
     renderer: html
 
 scribe_stripe:
-    api_key: sk_test_4a1tSp5RdT8UoC0bszFlVUbD
+    api_key: none
 
 gregwar_captcha: 
-    width:            500
+    width:            550
     height:           120
     length:           6
-    quality:          75
+    quality:          60
     charset:          'abcdefhjkmnprstuvwxyz23456789'
     reload:           true
     as_url:           true

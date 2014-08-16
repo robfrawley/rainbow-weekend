@@ -22,9 +22,17 @@ rw_register_convention_clear:
     pattern:  /register/convention/__/clear
     defaults: { _controller: RwWebBundle:Register:itemClear }
 
+rw_register_convention_verify_state:
+    pattern:  /register/convention/__/verify/state
+    defaults: { _controller: RwWebBundle:Register:verifyState }
+
 rw_register_convention_checkout:
     pattern:  /register/convention/checkout
     defaults: { _controller: RwWebBundle:Register:itemCheckout }
+
+rw_register_convention_checkout_success:
+    pattern:  /register/convention/checkout/success
+    defaults: { _controller: RwWebBundle:Register:itemCheckoutSuccess }
 
 rw_register_convention:
     pattern:  /register/convention

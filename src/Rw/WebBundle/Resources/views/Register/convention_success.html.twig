@@ -1,0 +1,35 @@
+{% extends 'RwWebBundle::base.html.twig' %}
+
+{% block content %}
+
+    {% include 'RwWebBundle::_jumbotron.html.twig' with {
+        'header': 'Purchase Complete',
+        'lead'  : 'Your purchase has been successfully processed and your credit card has been charged.'
+    } only %}
+
+    <div class="container">
+        <div class="register">
+            <div class="items">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Your order is complete!
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            Your purchase has been successfully processed and your credit card has been charged <code>${{ cart_total }}.00</code>.
+                        </p>
+                        <p>
+                            Please check your e-mail for a confirmation message. We look forward to seeing you at Rainbow Weekend!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="cart">
+                {% include 'RwWebBundle:Register:_cart.html.twig' with {checkout: false, done: true} %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

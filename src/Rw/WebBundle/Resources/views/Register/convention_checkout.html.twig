@@ -3,50 +3,542 @@
 {% block content %}
 
     {% include 'RwWebBundle::_jumbotron.html.twig' with {
-        'header': 'Tickets',
-        'lead'  : 'You can purchase the full package or a subset of items for the convention.'
+        'header': 'Checkout',
+        'lead'  : 'Verify your cart, personal, and billing information before processing your order.'
     } only %}
 
     <div class="container">
-        <div class="register">
-            <div class="items">
-                <p class="lead">
-                    The below items are available to purchase using any major credit card.
-                </p>
-                {% for group in groups %}
-                    <h1>{{ group.getName }}</h1>
-                    {% for item in group.getItemsCurrent %}
-                        <div class="item">
-                            <h4 class="title">
-                                {{ item.name }}<br />
-                                <small>
-                                    {{ item.datetimeStart.format(item.dateformatStart) }}
-                                    {% if item.datetimeEnd != null %}
-                                        to {{ item.datetimeEnd.format(item.dateformatEnd) }}
-                                    {% endif %}
-                                </small>
-                            </h4>
-                            <p class="price">
-                                {% if item.costDonation %}
-                                    Donation
-                                {% else %}
-                                    ${{ item.costDollars }}.00
-                                {% endif %}
-                            </p>
-                            <p class="desc">
-                                {{ item.description }}
-                            </p>
-                            <p class="buy">
-                                <a href="{{ path('rw_register_convention_add', {item: item.id}) }}">Add</a>
-                            </p>
+        <div class="checkout">
+            <div class="information">
+                {% set flashes = app.session.flashbag.get('error') %}
+                {% if flashes|length > 0 %}
+                    <div class="panel panel-general">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                Error Processing Order
+                            </h3>
                         </div>
-                    {% endfor %}
-                {% endfor %}
+                        <div class="panel-body">
+                            {% for f in flashes %}
+                                <p>
+                                    {{ f }}
+                                </p>
+                                <p>
+                                    Please update your billing information or credit card and try again.
+                                </p>
+                            {% endfor %}
+                        </div>
+                    </div>  
+                {% endif %}
+                {% set flashes = app.session.flashbag.get('notice') %}
+                {% if flashes|length > 0 %}
+                    <div class="panel panel-general">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                Submission Error
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            {% for f in flashes %}
+                                <p>
+                                    {{ f }}
+                                </p>
+                            {% endfor %}
+                        </div>
+                    </div>  
+                {% endif %}
+                <p class="lead">
+                    Fill out the following fields completely. Your transaction is secure&mdash;we do not store your credit card information after processing.
+                </p>
+                {{ form_start(form, {attr: {id: 'form-contact-type', 'novalidate': 'novalidate', 'class': 'rw'}}) }}
+                    <!--
+                        {{ form_errors(form) }}
+                    -->
+                    <h1>Personal Information</h1>
+                    <div class="callout callout-info">
+                        <p>
+                            Your email address will be used for your receipt. Your phone number will only be used if Registration needs to contact you. Your clean date is used to calculate the total number of years clean for the convention. Your contact details will not be sold or shared with any third party.
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.email) }}
+                        {{ 
+                            form_widget(
+                                form.email, 
+                                {
+                                    attr: 
+                                        {
+                                            class        : 'form-control'
+                                        },
+                                }
+                            )
+                        }}
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ form_label(form.phone) }}
+                                {{ 
+                                    form_widget(
+                                        form.phone, 
+                                        {
+                                            attr: 
+                                                {
+                                                    class        : 'form-control'
+                                                },
+                                        }
+                                    )
+                                }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ form_label(form.cleanDate) }}
+                                {{ 
+                                    form_widget(
+                                        form.cleanDate, 
+                                        {
+                                            attr: 
+                                                {
+                                                    'class'           : 'form-control',
+                                                    'data-date-format': 'MM/DD/YYYY'
+                                                },
+                                        }
+                                    )
+                                }}
+                            </div>
+                        </div>
+                    </div>
+                    <h1>Billing Address</h1>
+                    <div class="callout callout-info">
+                        <p>
+                            You must enter your full name and address exactly as it appears on your credit card bill. Failure to do so will result in payment failue.
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.fullName) }}
+                        {{ 
+                            form_widget(
+                                form.fullName, 
+                                {
+                                    attr: 
+                                        {
+                                            class        : 'form-control'
+                                        },
+                                }
+                            )
+                        }}
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                {{ form_label(form.addressLine01) }}
+                                {{ 
+                                    form_widget(
+                                        form.addressLine01, 
+                                        {
+                                            attr: 
+                                                {
+                                                    class        : 'form-control'
+                                                },
+                                        }
+                                    )
+                                }}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ form_label(form.addressLine02) }}
+                                {{ 
+                                    form_widget(
+                                        form.addressLine02, 
+                                        {
+                                            attr: 
+                                                {
+                                                    class        : 'form-control'
+                                                },
+                                        }
+                                    )
+                                }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ form_label(form.addressCity) }}
+                                {{ 
+                                    form_widget(
+                                        form.addressCity, 
+                                        {
+                                            attr: 
+                                                {
+                                                    class        : 'form-control'
+                                                },
+                                        }
+                                    )
+                                }}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ form_label(form.addressState) }}
+                                {{ 
+                                    form_widget(
+                                        form.addressState, 
+                                        {
+                                            attr: 
+                                                {
+                                                    class        : 'form-control'
+                                                },
+                                        }
+                                    )
+                                }}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ form_label(form.addressZip) }}
+                                {{ 
+                                    form_widget(
+                                        form.addressZip, 
+                                        {
+                                            attr: 
+                                                {
+                                                    class        : 'form-control'
+                                                },
+                                        }
+                                    )
+                                }}
+                            </div>
+                        </div>
+                    </div>
+                    <h1>Credit Card</h1>
+                    <div class="callout callout-info">
+                        <p>
+                            We accept all major credit cards&mdash;Visa, MasterCard, American Express, JCB, Discover, and Diners Club.
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.cardNumber) }}
+                        {{ 
+                            form_widget(
+                                form.cardNumber, 
+                                {
+                                    attr: 
+                                        {
+                                            class        : 'form-control'
+                                        },
+                                }
+                            )
+                        }}
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                {{ form_label(form.cardExperation) }}
+                                {{ 
+                                    form_widget(
+                                        form.cardExperation, 
+                                        {
+                                            attr: 
+                                                {
+                                                    class        : 'form-control'
+                                                },
+                                        }
+                                    )
+                                }}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ form_label(form.cardCvc) }}
+                                {{ 
+                                    form_widget(
+                                        form.cardCvc, 
+                                        {
+                                            attr: 
+                                                {
+                                                    class        : 'form-control'
+                                                },
+                                        }
+                                    )
+                                }}
+                            </div>
+                        </div>
+                    </div>
+                    <h1>Confirmation</h1>
+                    <div class="callout callout-info">
+                        <p>
+                            Optionally enter any additional notes or comments for the committee. Finally, you must enter the security code before continuing. By entering the security code you authorize your credit card to be charged.
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.notes) }}
+                        {{ 
+                            form_widget(
+                                form.notes, 
+                                {
+                                    attr: 
+                                        {
+                                            class        : 'form-control',
+                                            'rows'       : 6
+                                        },
+                                }
+                            )
+                        }}
+                    </div>
+                    <div class="form-group form-group-captch-sm">
+                            {{ form_label(form.captcha) }}
+                            {{ 
+                                form_widget(
+                                    form.captcha, 
+                                    {
+                                        attr: 
+                                            {
+                                                class        : 'form-control',
+                                                'placeholder': 'Enter the validation code'
+                                            },
+                                    }
+                                )
+                            }}
+                            <div class="form-captcha-error">
+                                {{ form_errors(form.captcha) }}
+                            </div>
+                        </div>
+                    <div class="form-submit">
+                        <button role="submit" type="submit" name="form-contact-type-submit" id="form-submit" class="btn btn-sm btn-info btn-block">Charge Credit Card</button>
+                    </div>
+
+                {{ form_end(form) }}
             </div>
             <div class="cart">
-                {% include 'RwWebBundle:Register:_cart.html.twig' with {checkout: true} %}
+                {% include 'RwWebBundle:Register:_cart.html.twig' with {checkout: true, done: false} %}
+                }
             </div>
         </div>
     </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        $(document).ready(function() {
+
+            $('#checkout_type_captcha').removeAttr('required');
+
+            $(function () {
+                $('#checkout_type_cleanDate').datepicker({
+                    format: 'mm/dd/yyyy',
+                    endDate: "today",
+                    startView: 2,
+                    autoClose: true
+                }).on('changeDate', function(e){
+                    $('#checkout_type_cleanDate').focus();
+                    $('#checkout_type_cleanDate').blur();
+                    $('#checkout_type_cleanDate').datepicker('hide');
+                    $('#checkout_type_fullName').focus();
+                });
+            });
+
+            $(function () {
+                $('#checkout_type_cardExperation').datepicker({
+                    format: "mm/yyyy",
+                    startView: 2,
+                    minViewMode: 1,
+                    autoClose: true
+                }).on('changeDate', function(e){
+                    $('#checkout_type_cardExperation').focus();
+                    $('#checkout_type_cardExperation').blur();
+                    $('#checkout_type_cardExperation').datepicker('hide');
+                    $('#checkout_type_cardCvc').focus();
+                });
+            });
+
+            $('#form-contact-type').bootstrapValidator({
+                feedbackIcons: {
+                    valid: 'fa fa-check',
+                    invalid: 'fa fa-times',
+                    validating: 'fa fa-refresh fa-spin'
+                },
+                live: 'enabled',
+                trigger: 'blur',
+                fields: {
+                    email: {
+                        selector  : '#checkout_type_email',
+                        validators: {
+                            notEmpty: {
+                                message: 'Enter an email address.'
+                            },
+                            emailAddress: {
+                                message: 'Enter a valid email address.'
+                            }
+                        }
+                    },
+                    phone: {
+                        selector  : '#checkout_type_phone',
+                        validators: {
+                            notEmpty: {
+                                message: 'Enter a phone number.'
+                            },
+                            phone: {
+                                message: 'Enter a valid phone number.',
+                                country: 'US'
+                            }
+                        }
+                    },
+                    cleanDate: {
+                        selector  : '#checkout_type_cleanDate',
+                        threshold : 10,
+                        validators: {
+                            notEmpty: {
+                                message: 'Enter your clean date.'
+                            },
+                            date: {
+                                format: 'MM/DD/YYYY',
+                                message: 'Enter your clean date as MM/DD/YYYY.'
+                            }
+                        }
+                    },
+                    name: {
+                        selector  : '#checkout_type_fullName',
+                        validators: {
+                            notEmpty: {
+                                message: 'Enter your full name.'
+                            }
+                        }
+                    },
+                    addressLine01: {
+                        selector  : '#checkout_type_addressLine01',
+                        validators: {
+                            notEmpty: {
+                                message: 'Enter an address.'
+                            }
+                        }
+                    },
+                    addressLine02: {
+                        selector  : '#checkout_type_addressLine02',
+                        validators: {
+                            stringLength: {
+                                min      : 0
+                            }
+                        }
+                    },
+                    addressCity: {
+                        selector  : '#checkout_type_addressCity',
+                        validators: {
+                            notEmpty: {
+                                message: 'Enter a city name.'
+                            }
+                        }
+                    },
+                    addressState: {
+                        selector  : '#checkout_type_addressState',
+                        validators: {
+                            notEmpty: {
+                                message: 'Enter a state abbreviation (ex. FL).'
+                            },
+                            stringLength: {
+                                message  : 'Enter a valid state abbreviation (ex. FL).',
+                                min      : 2,
+                                max      : 2
+                            },
+                            remote: {
+                                message: 'Enter a valid state abbreviation (ex. FL).',
+                                url: '{{ path('rw_register_convention_verify_state') }}'
+                            }
+                        }
+                    },
+                    addressZip: {
+                        selector  : '#checkout_type_addressZip',
+                        validators: {
+                            notEmpty: {
+                                message: 'Enter a zipcode.'
+                            },
+                            stringLength: {
+                                message  : 'Enter a valid zipcode.',
+                                min      : 5,
+                                max      : 5
+                            }
+                        }
+                    },
+                    cardNumber: {
+                        selector  : '#checkout_type_cardNumber',
+                        validators: {
+                            notEmpty: {
+                                message: 'Enter a credit card number.'
+                            },
+                            creditCard: {
+                                message: 'Enter a valid credit card number.'
+                            }
+                        }
+                    },
+                    cardExperation: {
+                        selector  : '#checkout_type_cardExperation',
+                        threshold : 7,
+                        validators: {
+                            notEmpty: {
+                                message: 'Enter an experation date.'
+                            },
+                            regexp: {
+                                regexp: /^[0-9]{2}\/[0-9]{4}$/,
+                                message: 'Enter a valid experation date as MM/YYYY.'
+                            }
+                        }
+                    },
+                    cardCvv: {
+                        selector  : '#checkout_type_cardCvc',
+                        validators: {
+                            notEmpty: {
+                                message: 'Enter a CVV code.'
+                            },
+                            cvv: {
+                                creditCardField: 'cardNumber',
+                                message: 'Enter a valid CVV code.'
+                            }
+                        }
+                    },
+                    notes: {
+                        selector  : '#checkout_type_notes',
+                        validators: {
+                            stringLength: {
+                                min      : 0
+                            }
+                        }
+                    },
+                    captcha: {
+                        selector  : '#checkout_type_captcha',
+                        validators: {
+                            notEmpty: {
+                                message: 'Enter the security code.'
+                            },
+                            stringLength: {
+                                message  : 'Enter a valid security code.',
+                                min      : 6,
+                                max      : 6
+                            },
+                            regexp: {
+                                regexp: /^[abcdefhjkmnprstuvwxyz23456789]+$/,
+                                message: 'Enter a valid security code.'
+                            }
+                        }
+                    }
+                }
+            });
+            $('#form-contact-type').submit(function(e) {
+                if ($('#form-contact-type').data('bootstrapValidator').isValid() === true) {
+                    $('#form-submit').attr('disabled', 'disabled');
+                    $('#form-submit').html('<i class="fa fa-spinner fa-spin"></i> Processing');
+                } else {
+                    e.preventDefault();
+                }
+            });
+
+        });
+
+    </script>
 
 {% endblock %}

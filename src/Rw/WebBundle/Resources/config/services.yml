@@ -8,6 +8,7 @@ parameters:
     scribe.parser.swim.class: Rw\WebBundle\Utility\Parser\Swim\SwimParser
     scribe.parser.swim.twig.class: Rw\WebBundle\Templating\Extension\SwimExtension
     rw.contact.type.class: Rw\WebBundle\Form\ContactType
+    rw.checkout.type.class: Rw\WebBundle\Form\CheckoutType
 
 services:
     rf.listener.maintenance:
@@ -62,3 +63,8 @@ services:
         class:      %rw.contact.type.class%
         tags:
             - { name: form.type, alias: contact_type }
+
+    rw.checkout.type:
+        class:      %rw.checkout.type.class%
+        tags:
+            - { name: form.type, alias: checkout_type }
