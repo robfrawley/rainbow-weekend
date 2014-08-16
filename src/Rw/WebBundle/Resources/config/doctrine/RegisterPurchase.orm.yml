@@ -42,15 +42,19 @@ Rw\WebBundle\Entity\RegisterPurchase:
             type: string
             length: 255
         chargeCvcCheck:
-            type: boolean
+            type: string
+            length: 255
         chargeAddressLine01Check:
-            type: boolean
+            type: string
+            length: 255
         chargeAddressZipCheck:
-            type: boolean
+            type: string
+            length: 255
         chargeAmount:
             type: integer
         chargeState:
-            type: boolean
+            type: string
+            length: 255
         chargeResponse:
             type: text
         notes:
