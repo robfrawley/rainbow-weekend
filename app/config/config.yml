@@ -60,7 +60,7 @@ kwattro_markdown:
     renderer: html
 
 scribe_stripe:
-    api_key: none
+    api_key: sk_live_iscEBAE9pLTi5VA8xG960IAZ
 
 gregwar_captcha: 
     width:            550
