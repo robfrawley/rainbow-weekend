@@ -17,7 +17,7 @@
                     <a href="{{ path('rw_program') }}">Program</a>
                 </li>
                 <li class="dropdown {% if currentRoute == 'rw_register_hotel' or currentRoute == 'rw_register_convention' %}active{% endif %}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Register</b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Register <i class="fa fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="{{ path('rw_register_hotel') }}">Book Hotel</a>
@@ -28,7 +28,7 @@
                     </ul>
                 </li>
                 <li class="dropdown {% if currentRoute == 'rw_about_committee' or currentRoute == 'rw_about_history' %}active{% endif %}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">About</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <i class="fa fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="{{ path('rw_about_history') }}">History</a>

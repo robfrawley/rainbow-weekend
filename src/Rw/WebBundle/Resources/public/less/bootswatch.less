@@ -47,11 +47,11 @@
   &-default {
 
     .dropdown-menu {
-      background-color: #fff;
+      background-color: @navbar-default-color;
 
       > li > a,
       > li > a:focus {
-        color: #navbar-default-bg;
+        color: @navbar-default-bg;
       }
 
       > li > a:hover,
@@ -65,17 +65,19 @@
   &-inverse {
 
     .dropdown-menu {
-      background-color: @navbar-inverse-bg;
+      background-color: @navbar-inverse-dropdown-bg;
+      border:1px solid @brand-primary;
+      border-top:none;
 
       > li > a,
       > li > a:focus {
-        color: @navbar-inverse-color;
+        color: @navbar-inverse-dropdown-color;
       }
 
       > li > a:hover,
       > .active > a,
       > .active > a:hover {
-        background-color: @navbar-inverse-link-hover-bg;
+        background-color: @navbar-inverse-dropdown-link-hover-bg;
       }
     }
   }

@@ -88,7 +88,7 @@ class CheckoutType extends AbstractType
             )
             ->add('cardCvc', 'text', 
                 [
-                    'label'    => 'Card CVV Code',
+                    'label'    => 'Card CVC Code',
                     'required' => false,
                 ]
             )

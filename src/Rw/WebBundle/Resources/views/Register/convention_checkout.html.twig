@@ -307,7 +307,7 @@
                             </div>
                         </div>
                     <div class="form-submit">
-                        <button role="submit" type="submit" name="form-contact-type-submit" id="form-submit" class="btn btn-sm btn-info btn-block">Charge Credit Card</button>
+                        <button role="submit" type="submit" name="form-contact-type-submit" id="form-submit" class="btn btn-sm btn-primary btn-block">Charge Credit Card</button>
                     </div>
 
                 {{ form_end(form) }}
@@ -492,11 +492,11 @@
                         selector  : '#checkout_type_cardCvc',
                         validators: {
                             notEmpty: {
-                                message: 'Enter a CVV code.'
+                                message: 'Enter a CVC code.'
                             },
                             cvv: {
                                 creditCardField: 'cardNumber',
-                                message: 'Enter a valid CVV code.'
+                                message: 'Enter a valid CVC code.'
                             }
                         }
                     },
