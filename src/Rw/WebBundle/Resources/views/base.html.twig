@@ -6,7 +6,7 @@
 
         {% stylesheets
             output='assets/css/compiled-all.css'
-            filter=''
+            filter='yui_css'
             '@rw_less'
             '@font_awesome_css'
             '@boostrapvalidator_css'
@@ -29,7 +29,7 @@
 
     {% javascripts 
         output='assets/js/compiled-all.js'
-        filter=''
+        filter='closure'
         '@jquery_js'
         '@smoothscroll_js'
         '@bootstrap_js'
@@ -42,7 +42,7 @@
 
     {% javascripts 
         output='assets/js/compiled_ie.js'
-        filter=''
+        filter='closure'
         '@html5shiv_js'
         '@respond_js' 
     %}
