@@ -49,3 +49,7 @@ rw_about_committee:
 rw_about_history:
     pattern:  /about/history
     defaults: { _controller: RwWebBundle:About:history }
+
+rw_event:
+    pattern:  /events
+    defaults: { _controller: RwWebBundle:Event:index }

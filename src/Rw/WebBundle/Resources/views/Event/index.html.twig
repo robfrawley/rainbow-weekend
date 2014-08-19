@@ -1,0 +1,53 @@
+{% extends 'RwWebBundle::base.html.twig' %}
+
+{% block content %}
+
+    {% include 'RwWebBundle::_jumbotron.html.twig' with {
+        'header': 'Events',
+        'lead'  : 'We hold a collection of events to raise funds for the Rainbow Weekend convention.'
+    } only %}
+
+    <div class="container">
+        <div class="register">
+            <div class="items">
+                <p class="lead">
+                    Our upcoming events:
+                </p>
+                {% for item in events %}
+                    <div class="item">
+                        <h4 class="title">
+                            {{ item.name }}<br />
+                            <small>
+                                {{ item.startTime.format('D, M j @ g:ia') }}
+                                {% if item.endTime != null %}
+                                    to {{ item.endTime.format('g:ia') }}
+                                {% endif %}
+                            </small>
+                        </h4>
+                        <p class="desc">
+                            {{ item.description|raw }}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="cart">
+                <div class="panel panel-general">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Our Sponsor Groups</h3>
+                    </div>
+                    <div class="list-group">
+                        <span class="list-group-item">
+                          <h4 class="list-group-item-heading">Rainbow Group</h4>
+                          <p class="list-group-item-text">This group has had locations in both Gold Coast Area and South Dade Area.</p>
+                        </span>
+                        <span class="list-group-item">
+                          <h4 class="list-group-item-heading">New Path</h4>
+                          <p class="list-group-item-text">As one of the first GLBT meetings in the Gold Coast Area, this group just celebrated it's 30 anniversary.</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

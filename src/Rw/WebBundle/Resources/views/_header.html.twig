@@ -16,6 +16,9 @@
                 <li class="{% if currentRoute == 'rw_program' %}active{% endif %}">
                     <a href="{{ path('rw_program') }}">Program</a>
                 </li>
+                <li class="{% if currentRoute == 'rw_event' %}active{% endif %}">
+                    <a href="{{ path('rw_event') }}">Events</a>
+                </li>
                 <li class="dropdown {% if currentRoute == 'rw_register_hotel' or currentRoute == 'rw_register_convention' %}active{% endif %}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Register <i class="fa fa-caret-down"></i></a>
                     <ul class="dropdown-menu">

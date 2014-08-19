@@ -1,0 +1,23 @@
+Rw\WebBundle\Entity\Event:
+    type: entity
+    table: null
+    repositoryClass: Rw\WebBundle\Entity\EventRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: 255
+        location:
+            type: string
+            length: 255
+        startTime:
+            type: datetime
+        endTime:
+            type: datetime
+        description:
+            type: text
+    lifecycleCallbacks: {  }
