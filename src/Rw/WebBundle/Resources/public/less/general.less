@@ -140,6 +140,22 @@ footer {
             .callout-info;
             position:relative !important;
             padding-right:85px;
+
+            &.presale {
+                border-color: #F0E1EC;
+                border-left-color: #E04EB7;
+                padding-right:110px;
+
+                .buy > a {
+                    background-color: #E872C7;
+                    border-color: #E04EB7; 
+                    &:hover, &:focus {
+                        background-color: #e04eb7;
+                        border-color: #e04eb7;
+                    }
+                }
+            }
+
             .price {
                 position:absolute;
                 top:20px;
@@ -148,6 +164,12 @@ footer {
             }
             .desc {
                 margin-bottom:0px;
+                &.cutoff-notice {
+                    margin-top: 6px;
+                    font-size: 10px;
+                    font-style: normal;
+                    color: #de6764;
+                }
             }
             .buy {
                 position:absolute;
@@ -157,6 +179,7 @@ footer {
                     .btn;
                     .btn-info;
                     .btn-sm;
+                    text-shadow: none;
                 }
             }
         }

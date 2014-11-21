@@ -10,6 +10,10 @@ rw_contact:
     pattern:  /contact
     defaults: { _controller: RwWebBundle:Default:contact }
 
+rw_clean_time:
+    pattern:  /register/clean_time_count
+    defaults: { _controller: RwWebBundle:Default:cleanTimeCount }
+
 rw_program:
     pattern:  /program
     defaults: { _controller: RwWebBundle:Program:index }

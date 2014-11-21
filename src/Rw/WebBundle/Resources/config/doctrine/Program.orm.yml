@@ -22,4 +22,7 @@ Rw\WebBundle\Entity\Program:
         context:
             type: string
             length: '20'
+        room:
+            type: string
+            lgneth: '20'
     lifecycleCallbacks: {  }

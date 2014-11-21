@@ -11,15 +11,20 @@
         {% include 'RwWebBundle:Program:_program.html.twig' with {
             'header' : 'Main Speakers',      
             'program': program_main,
-            'desc'   : 'Our main speaker events occur Friday and Saturday night, as well as Sunday monring. Our Friday meeting includes a clean-time countdown, an amazing experience for everyone.'
+            'desc'   : 'Our main speaker events occur Friday and Saturday night, as well as Sunday monring. Our Saturday meeting includes a clean-time countdown, an amazing experience for everyone.'
         } only %}
         {% include 'RwWebBundle:Program:_program.html.twig' with {
-            'header' : 'Saturday <small>Track 1</small>', 
+            'header' : 'Saturday <small>Morning and Evening</small>', 
+            'program': program_sat_0,
+            'desc'   : 'Our Staurday schedule offers the following morning and evening meetings.'
+        } only %}
+        {% include 'RwWebBundle:Program:_program.html.twig' with {
+            'header' : 'Saturday <small>Workshop Track 1</small>', 
             'program': program_sat_1,
             'desc'   : 'Our Staurday schedule includes two different workshop tracts. Both offer excellent topics&mdash;choose your poison.'
         } only %}
         {% include 'RwWebBundle:Program:_program.html.twig' with {
-            'header' : 'Saturday <small>Track 2</small>', 
+            'header' : 'Saturday <small>Workshop Track 2</small>', 
             'program': program_sat_2,
             'desc'   : 'Our Staurday schedule includes two different workshop tracts. Both offer excellent topics&mdash;choose your poison.'
         } only %}

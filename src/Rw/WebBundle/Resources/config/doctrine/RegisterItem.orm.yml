@@ -42,12 +42,15 @@ Rw\WebBundle\Entity\RegisterItem:
             nullable: true
         statementDescription:
             type: string
-            length: 16
+            length: 24
             nullable: true
         weight:
             type: integer
         metadata:
             type: json_array
+            nullable: true
+        presale:
+            type: boolean
             nullable: true
     manyToOne:
         group:

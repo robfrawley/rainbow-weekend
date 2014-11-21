@@ -91,6 +91,11 @@ class RegisterItem
     private $metadata;
 
     /**
+     * @var bool
+     */
+    private $presale;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -121,6 +126,43 @@ class RegisterItem
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set presale
+     *
+     * @param bool $presale
+     * @return RegisterItem
+     */
+    public function setPresale($presale)
+    {
+        $this->presale = $presale;
+    
+        return $this;
+    }
+
+    /**
+     * Get presale
+     *
+     * @return bool|null
+     */
+    public function getPresale()
+    {
+        return $this->presale;
+    }
+
+    /**
+     * Is presale
+     *
+     * @retrun bool
+     */
+    public function isPresale()
+    {
+        if ($this->presale !== null && $this->presale === true) {
+            return true;
+        }
+
+        return false;
     }
 
     /**

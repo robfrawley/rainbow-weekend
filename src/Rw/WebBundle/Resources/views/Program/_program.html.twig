@@ -5,17 +5,19 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th width="35%">Title</th>
-            <th width="30%">Date</th>
-            <th width="15%">Speaker</th>
-            <th width="20%">Area</th>
+            <th width="40%">Title</th>
+            <th width="18%">Room</th>
+            <th width="14%">Time</th>
+            <th width="14%">Speaker</th>
+            <th width="14%">Area</th>
         </tr>
     </thead>
     <tbody>
         {% for p in program %}
             <tr>
                 <td>{{ p.getTitle }}</td>
-                <td>{{ p.getDatetime.format('D, M j @ g:ia') }}</td>
+                <td>{{ p.getRoom }}</td>
+                <td>{{ p.getDatetime.format('g:ia') }}</td>
                 <td>{{ p.getSpeaker }}</td>
                 <td>{{ p.getArea }}</td>
             </tr>

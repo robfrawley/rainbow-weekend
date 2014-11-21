@@ -11,6 +11,7 @@
 namespace Rw\WebBundle\Controller;
 
 use Swift_Message;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * DefaultController
@@ -38,9 +39,38 @@ class DefaultController extends AbstractController
         );
     }
 
+    public function cleanTimeCountAction()
+    {
+        $registrations = $this->getDoctrine()->getRepository('RwWebBundle:RegisterPurchase')->findAll();
+
+        $now = time();
+        $totalSeconds = 0;
+        foreach ($registrations as $r) {
+            $cleanDate = $r->getCleanDate()->format('U');
+            if ($cleanDate < 0) {
+                continue;
+            }
+            $cleanTime = $now - $cleanDate;
+            $totalSeconds += $cleanTime;
+        }
+
+        $data = [
+            'cleanTime' => [
+                'seconds' => $totalSeconds,
+                'minutes' => floor($totalSeconds/60),
+                'hours'   => floor($totalSeconds/60/60),
+                'days'    => floor($totalSeconds/60/60/24),
+                'months'  => round($totalSeconds/60/60/24/30, 2),
+                'years'   => round($totalSeconds/60/60/24/356, 2)
+            ]
+        ];
+
+        return new JsonResponse($data);
+    }
+
     public function contactAction()
     {
-        list($request, $mailer) = 
+        list($request, $mailer) =
             $this->getServices(['request', 'mailer'])
         ;
 
@@ -57,7 +87,7 @@ class DefaultController extends AbstractController
                 ->setReplyTo([$contact->get('email')->getData() => $contact->get('name')->getData()])
                 ->setBody(
                     $this->renderView(
-                        'RwWebBundle:Mail:contact.html.twig', 
+                        'RwWebBundle:Mail:contact.html.twig',
                         [
                             'name'    => $contact->get('name')->getData(),
                             'phone'   => $contact->get('phone')->getData(),
@@ -77,7 +107,7 @@ class DefaultController extends AbstractController
         }
 
         return $this->render(
-            'RwWebBundle:Default:contact.html.twig', 
+            'RwWebBundle:Default:contact.html.twig',
             [
                 'form_submitted'           => $form_submitted,
                 'form_contact'             => $contact->createView(),

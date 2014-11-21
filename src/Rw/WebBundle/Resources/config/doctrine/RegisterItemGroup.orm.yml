@@ -13,6 +13,10 @@ Rw\WebBundle\Entity\RegisterItemGroup:
             length: 255
         weight:
             type: integer
+        emptyText:
+            type: text
+        showIfEmpty:
+            type: boolean
     oneToMany:
         items:
             targetEntity: RegisterItem

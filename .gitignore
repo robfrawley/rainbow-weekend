@@ -92,3 +92,4 @@ app/config/security.yml
 /resources/phpmyadmin/
 /web/uploads/
 *.fuse_hidden*
+*.sub*.tmp*

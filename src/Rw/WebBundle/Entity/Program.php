@@ -39,7 +39,12 @@ class Program
      */
     private $context;
 
+    private $room;
 
+public function getRoom()
+{
+    return $this->room;
+}
     /**
      * Get id
      *

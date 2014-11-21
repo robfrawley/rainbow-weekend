@@ -23,6 +23,10 @@ class ProgramController extends AbstractController
             ->getRepository('RwWebBundle:Program')
             ->getByContextOrderByDatetime('main')
         ;
+        $program_sat_0 = $em
+            ->getRepository('RwWebBundle:Program')
+            ->getByContextOrderByDatetime('saturday_track_0')
+        ;
         $program_sat_1 = $em
             ->getRepository('RwWebBundle:Program')
             ->getByContextOrderByDatetime('saturday_track_1')
@@ -40,6 +44,7 @@ class ProgramController extends AbstractController
             'RwWebBundle:Program:index.html.twig', 
             [
                 'program_main'  => $program_main,
+                'program_sat_0' => $program_sat_0,
                 'program_sat_1' => $program_sat_1,
                 'program_sat_2' => $program_sat_2,
                 'program_sun_1' => $program_sun_1,

@@ -24,6 +24,10 @@ class RegisterItemGroup
      */
     private $weight;
 
+    private $emptyText;
+
+    private $showIfEmpty;
+
     /**
      * @var array
      */
@@ -106,6 +110,21 @@ class RegisterItemGroup
     public function getItems()
     {
         return $this->items;
+    }
+
+public function setShowIfEmpty($showIfEmpty)
+{
+	$this->showIfEmpty = $showIfEmpty;
+}
+
+public function getShowIfEmpty()
+{
+	return $this->showIfEmpty;
+}
+
+    public function showIfEmpty()
+    {
+        return (bool) $this->getShowIfEmpty();
     }
 
     public function getItemsCurrent()

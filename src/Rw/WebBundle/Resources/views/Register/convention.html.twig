@@ -14,13 +14,19 @@
                     Choose any combination of the below items.
                 </p>
                 {% for group in groups %}
+                    {% if group.getItemsCurrent|length > 0 %}
                     <h1>{{ group.getName }}</h1>
                     {% for item in group.getItemsCurrent %}
-                        <div class="item">
+                        <div class="item {% if item.isPresale == true %}presale{% endif %}">
                             <h4 class="title">
                                 {{ item.name }}<br />
                                 <small>
-                                    {{ item.datetimeStart.format(item.dateformatStart) }}
+                                    {% if item.datetimeStart == null and item.datetimeEnd == null %}
+                                        This is a pre-sale item for next year.
+                                    {% endif %}
+                                    {% if item.datetimeStart != null %}
+                                        {{ item.datetimeStart.format(item.dateformatStart) }}
+                                    {% endif %}
                                     {% if item.datetimeEnd != null %}
                                         to {{ item.datetimeEnd.format(item.dateformatEnd) }}
                                     {% endif %}
@@ -36,11 +42,32 @@
                             <p class="desc">
                                 {{ item.description }}
                             </p>
+                            {% if item.datetimeCutoff != null and (item.datetimeCutoff.format('U') - "now"|date("U")) < 86400 %}
+                                <p class="desc cutoff-notice">
+				    Note: This item will not be available for online purchase after <strong>{{ item.datetimeCutoff.format("D, M j @ g:ia") }}</strong>.
+                                    {% if item.datetimeStart != null and ("now"|date("U") - item.datetimeStart.format('U')) < 86400 %}
+                                        Please see the registration desk for any last-minute additions to your package.
+                                    {% else %}
+                                        After this time, the price of this item will increase.
+                                    {% endif %}
+                                </p>
+                            {% endif %}
                             <p class="buy">
-                                <a href="{{ path('rw_register_convention_add', {item: item.id}) }}">Add</a>
+                                <a href="{{ path('rw_register_convention_add', {item: item.id}) }}">{% if item.isPresale %}Pre-Order{% else %}Add{% endif %}</a>
                             </p>
                         </div>
                     {% endfor %}
+                    {% elseif group.showIfEmpty == true %}
+                        <h1>{{ group.getName }}</h1>
+                        <div class="item">
+                            <h4 class="title">
+                                No Available Items
+                            </h4>
+                            <p class="desc">
+				There are currently no items available for purchase within this category. This is likely because the event has already begun or has ended. If you are at the convention, please see the registration desk for more information.
+                            </p>
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </div>
             <div class="cart">
